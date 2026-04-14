@@ -17,13 +17,19 @@ export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) 
     <main className="min-h-screen pt-24 pb-32 px-6 lg:px-12 kenyan-pattern">
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20 mt-12 text-center lg:text-left">
-          <div>
+        <div className="relative grid lg:grid-cols-2 gap-12 items-center mb-20 mt-12 text-center lg:text-left rounded-[3rem] lg:rounded-none overflow-hidden lg:overflow-visible">
+          {/* Mobile Background Image */}
+          <div className="absolute inset-0 z-0 lg:hidden">
+            <img alt="Successful Entrepreneur" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaBOJ2ygtPwZmD4-AHfsJcNkuauH1SccKHix7Sl8QaqH0B819CdhW_lDzRdBmedAqK1kqFuXpuUPl2PLbeDdBLO4C9TsVRstxMwM8l9FOgdPhm6KQbwqacjoot_PYwsDoz26TGIy2VtVwwoChMH0fbnxOtuQTuo5a2IRrrbDa4gbJTaGaKuppyDAO1O1MUw_o613QMU-lIXwHI2oxfhTbOb4FI7n9PAC-_cr1I7HNm3p_1et8rPnK3ycHpr3lBWZsUOJI_SlPt6w" referrerPolicy="no-referrer" />
+            <div className="absolute inset-0 bg-[#fcf9f4]/85 dark:bg-slate-950/85"></div>
+          </div>
+
+          <div className="relative z-10 py-12 px-6 lg:py-0 lg:px-0">
             <h1 className="text-5xl lg:text-7xl font-headline font-extrabold text-on-surface tracking-tight leading-tight mb-6">
               What kind of <span className="text-primary">website</span><br/>do you need?
             </h1>
             <p className="text-lg text-on-surface-variant max-w-2xl font-medium mx-auto lg:mx-0">
-              Select your journey below. We'll provide the specific tools, templates, and hosting infrastructure optimized for your Nairobi-based venture.
+              Select your journey below. We'll provide the specific tools, templates, and hosting infrastructure optimized for your business venture.
             </p>
           </div>
           <div className="relative hidden lg:block">

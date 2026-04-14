@@ -22,7 +22,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
         <header className="max-w-2xl">
           <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 3: Features</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight mb-4 font-headline">Add the Features You Want.</h1>
-          <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Customize your digital experience. Select the components that will power your business growth in Nairobi and beyond.</p>
+          <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Customize your digital experience. Select the components that will power your business growth and beyond.</p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

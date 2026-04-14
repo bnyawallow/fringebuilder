@@ -13,7 +13,7 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
         <header className="mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 2: Selection</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight mb-4">Choose your package tier</h1>
-          <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Select the foundation for your digital home. Every tier includes a custom Nairobi-inspired design and high-performance hosting.</p>
+          <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Select the foundation for your digital home. Every tier includes a custom business design and high-performance hosting.</p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
@@ -155,7 +155,7 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
           </div>
           <div>
             <h4 className="text-xl font-bold text-on-surface mb-2 tracking-tight">Need a custom feature?</h4>
-            <p className="text-on-surface-variant max-w-2xl">All packages are flexible. If you need specific API integrations or bespoke Nairobi-themed animations, we can add them as line-items in the next step.</p>
+            <p className="text-on-surface-variant max-w-2xl">All packages are flexible. If you need specific API integrations or bespoke business animations, we can add them as line-items in the next step.</p>
           </div>
         </div>
       </div>
