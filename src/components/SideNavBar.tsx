@@ -18,34 +18,11 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
   const FullContent = () => (
     <>
       <div className="flex items-center justify-between mb-2 hidden md:flex">
-        <span className="text-lg font-bold text-[#1c1c19] dark:text-white font-headline">Live Pricing</span>
+        <span className="text-lg font-bold text-[#1c1c19] dark:text-white font-headline">Live Estimate</span>
         <span className="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2 py-0.5 rounded uppercase">KES</span>
       </div>
       
       <div className="space-y-4">
-        {/* Nav Tabs */}
-        <div className="space-y-2">
-          {[
-            { id: 1, icon: 'storefront', label: 'Business' },
-            { id: 2, icon: 'inventory_2', label: 'Package' },
-            { id: 3, icon: 'build', label: 'Features' },
-            { id: 4, icon: 'palette', label: 'Design' },
-            { id: 5, icon: 'fact_check', label: 'Summary' }
-          ].map((tab) => (
-            <div 
-              key={tab.id}
-              onClick={() => {
-                if (updateState) updateState({ step: tab.id });
-                setIsExpanded(false);
-              }}
-              className={`flex items-center gap-3 p-3 rounded-lg font-['Inter'] text-sm transition-all cursor-pointer ${state.step === tab.id ? 'border-l-4 border-[#006565] bg-[#ffffff] dark:bg-slate-800 text-[#006565] font-semibold' : 'text-[#3e4949] dark:text-slate-400 opacity-80 hover:bg-[#e5e2dd] dark:hover:bg-slate-800'}`}
-            >
-              <span className="material-symbols-outlined">{tab.icon}</span>
-              <span>{tab.label}</span>
-            </div>
-          ))}
-        </div>
-
         {/* Current Selection Summary */}
         <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm space-y-3">
           <div className="flex justify-between items-center text-sm">
@@ -95,7 +72,7 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
             <span>{formatCurrency(pricing.vat)}</span>
           </div>
           <div className="flex justify-between items-end pt-2">
-            <span className="font-headline font-bold">Total Price</span>
+            <span className="font-headline font-bold">Total Estimate</span>
             <div className="text-right">
               <p className="text-2xl font-extrabold text-primary leading-none">{formatCurrency(pricing.total)}</p>
               <p className="text-[10px] text-on-surface-variant mt-1">Includes 16% VAT</p>
@@ -121,7 +98,7 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
       </aside>
 
       {/* Mobile Bottom Bar (Docked above FooterActionBar) */}
-      <div className="md:hidden fixed bottom-[96px] left-0 right-0 bg-[#f6f3ee] dark:bg-slate-900 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
+      <div className="md:hidden fixed bottom-[72px] left-0 right-0 bg-[#f6f3ee] dark:bg-slate-900 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
         
         {/* Collapsed View / Toggle */}
         <div 
@@ -129,7 +106,7 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <div className="flex flex-col">
-            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Total Price</span>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Total Estimate</span>
             <span className="text-xl font-extrabold text-primary">KES {formatCurrency(pricing.total)}</span>
           </div>
           <div className="flex items-center gap-2 text-primary bg-primary/10 px-4 py-2 rounded-full">
