@@ -34,7 +34,7 @@ export function Step4DesignContact({ state, updateState }: Step4DesignContactPro
             className={`col-span-12 md:col-span-4 group cursor-pointer relative overflow-hidden speech-bubble bg-surface-container-lowest sunlight-shadow p-6 border-2 transition-all ${state.designMood === 'modern' ? 'border-primary' : 'border-transparent hover:border-primary'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-surface-container-high overflow-hidden">
-              <img alt="Minimalist tech interface with clean lines and high-contrast typography" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1472&auto=format&fit=crop" />
+              <img alt="Minimalist tech interface with clean lines and high-contrast typography" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGMVmhGyG6fLzzeZumjHvGBqBBt76mqyy9mQOCUuJXh7nuNN6HdCJ1hq88JSpHuSQKFzKsxZqpncmgMOPT0nUjPEdjqXM-81T7p8sYcTT2FhrLzPPZSxG5SscgvFiyW4MMyh_7G0QaUcJV9FrrUkAQ2JuVrmRPt7TTdn8MyrjSzrVYqNZdOjl-eeqoPn6AjIZMQ8V77kmuhNichJaNkCn56Bk_MqY5x3Mpxrf8JUO0r70T6EfhlIcRluZAuP6LB8R2a9cK7aK2Fg" referrerPolicy="no-referrer" />
             </div>
             <h3 className="font-headline font-bold text-lg mb-1">Modern</h3>
             <p className="text-on-surface-variant text-sm">Clean, sharp, and data-driven aesthetics.</p>
@@ -51,7 +51,7 @@ export function Step4DesignContact({ state, updateState }: Step4DesignContactPro
             className={`col-span-12 md:col-span-8 group cursor-pointer relative overflow-hidden speech-bubble bg-surface-container-lowest sunlight-shadow p-6 border-2 transition-all ${state.designMood === 'bold' ? 'border-primary' : 'border-transparent hover:border-primary'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-surface-container-high overflow-hidden">
-              <img alt="Vibrant design with energetic orange and teal gradients" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1429&auto=format&fit=crop" />
+              <img alt="Vibrant design with energetic orange and teal gradients" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFBji7KSboCJHlHo5p4zsc66iy53b5bGVblFhDYDR4ed5f66UHYcT8Qqkc0seiUwlvvIwrRXdQ1EkcQwQ1q8YLOypdxq3yIVPRVL21m7epvzCrC68kkQfKpl4y62CgSeDMD7_gBs9JBCOMCJmDqlY4-F_T62uyReXzvzb6ul0SQ60UvUjK3f8DbjLMRIdkZ5fpAYpn9Zrpll6NlhYKIWuHobxGMr2U4aGRsT6ZKY1Ab51UY4N4wo_3GsLOySpR9bVFkAfIYkYyUQ" referrerPolicy="no-referrer" />
             </div>
             <div className="flex justify-between items-start">
               <div>
@@ -70,7 +70,7 @@ export function Step4DesignContact({ state, updateState }: Step4DesignContactPro
             className={`col-span-12 md:col-span-5 group cursor-pointer relative overflow-hidden speech-bubble bg-surface-container-lowest sunlight-shadow p-6 border-2 transition-all ${state.designMood === 'warm' ? 'border-primary' : 'border-transparent hover:border-primary'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-secondary-fixed overflow-hidden">
-              <img alt="Warm earth tones and subtle cultural patterns" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1372&auto=format&fit=crop" />
+              <img alt="Warm earth tones and subtle cultural patterns" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiSDTAE4faTTfZD4TSWDdFfz5NZG2o9I0oSkm66Zp0Fr_MM27SXtBFtMhXX0OqIW5HAJgHs67qH7_bEiSPhbpz8grqo5JJG7olfxfjnGhu7DwuWuE6v5riXcQyMcPg67PExGQBywvuKncuENmtTKO60W3o0mk75gdgPg0bHvG39FeLcaxNZeVYdbfeDOOLaZrsQx5ixezbTZwhhJOricocVy0e29UvuiNArwoJspRGLRF6Y2WHaG5P4rnggfsBjU3Et7GU9mXNaQ" referrerPolicy="no-referrer" />
             </div>
             <h3 className="font-headline font-bold text-lg mb-1">Warm Kenyan</h3>
             <p className="text-on-surface-variant text-sm">Earthy neutrals and artisanal textures.</p>
@@ -87,7 +87,7 @@ export function Step4DesignContact({ state, updateState }: Step4DesignContactPro
             className={`col-span-12 md:col-span-3 group cursor-pointer relative overflow-hidden speech-bubble bg-surface-container-lowest sunlight-shadow p-6 border-2 transition-all ${state.designMood === 'professional' ? 'border-primary' : 'border-transparent hover:border-primary'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-primary-container overflow-hidden">
-              <img alt="Serious corporate layout with trustworthy blue tones" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1470&auto=format&fit=crop" />
+              <img alt="Serious corporate layout with trustworthy blue tones" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDffSTO2eZGAh0RZ58-YZ9YXnYUMuFhYfEpe2qDdVgOWHnxKhTM1w-RdBpZLCZAt6qWZVKFtywuaSsqMFaM4gMRYoxJx8Bxq9oxAVg4c5KucPWQ1uDsyzIsxWRMqLND-ztP51L1wF4Q1Slgc22uOtQfUdMatRqmskFM4T1DZty8J5UDJbXi07TTdxvcm4E_PP2kzIIN9qVlTvJcNsM-HDAPvkez-788gdXsXQJkFU_bMNQKAaDNv7Sp28FMz4tLzIUH_8Z8p274xw" referrerPolicy="no-referrer" />
             </div>
             <h3 className="font-headline font-bold text-lg mb-1">Professional</h3>
             <p className="text-on-surface-variant text-sm">Authority and trust.</p>
@@ -104,7 +104,7 @@ export function Step4DesignContact({ state, updateState }: Step4DesignContactPro
             className={`col-span-12 md:col-span-4 group cursor-pointer relative overflow-hidden speech-bubble bg-surface-container-lowest sunlight-shadow p-6 border-2 transition-all ${state.designMood === 'minimal' ? 'border-primary' : 'border-transparent hover:border-primary'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-surface-container overflow-hidden">
-              <img alt="Essentialist design focusing on content" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1467&auto=format&fit=crop" />
+              <img alt="Essentialist design focusing on content" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv-7s4roB_RWqArnN7ZSQyuKreK05IuiwFmIbsTpETb8qS9-BDGQeeviw4wIWBV7vW7tEOhnHroC9OxEMSEIhG-E5ahELkz3-TN8ub0ldrakCxlxo-XVIuHqy7HqoMuwhqlx7_bC_0lafwLHIDIRGqtXd7nODTrSZko8BaUXI8sOuxlMqbI0g4t8I7FBOYBJQfesqat5OAf1RQ7Gyfx1AEs7SC53XGM9TkMMhVuIC3j2V9dKq2bLGd3pu8SlXn9BnM9ZY_D-_SqQ" referrerPolicy="no-referrer" />
             </div>
             <h3 className="font-headline font-bold text-lg mb-1">Minimal</h3>
             <p className="text-on-surface-variant text-sm">Stripped back to the essentials.</p>

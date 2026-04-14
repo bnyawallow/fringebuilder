@@ -28,7 +28,7 @@ export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) 
           </div>
           <div className="relative hidden lg:block">
             <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl">
-              <img alt="Successful Kenyan Entrepreneur" className="w-full h-[400px] object-cover" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1469&auto=format&fit=crop" />
+              <img alt="Successful Kenyan Entrepreneur" className="w-full h-[400px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaBOJ2ygtPwZmD4-AHfsJcNkuauH1SccKHix7Sl8QaqH0B819CdhW_lDzRdBmedAqK1kqFuXpuUPl2PLbeDdBLO4C9TsVRstxMwM8l9FOgdPhm6KQbwqacjoot_PYwsDoz26TGIy2VtVwwoChMH0fbnxOtuQTuo5a2IRrrbDa4gbJTaGaKuppyDAO1O1MUw_o613QMU-lIXwHI2oxfhTbOb4FI7n9PAC-_cr1I7HNm3p_1et8rPnK3ycHpr3lBWZsUOJI_SlPt6w" referrerPolicy="no-referrer" />
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-fixed rounded-full -z-0 opacity-20"></div>
             <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary-fixed rounded-2xl -z-0 opacity-20"></div>
@@ -108,7 +108,7 @@ export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) 
         {/* Decorative Visual */}
         <div className="mt-24 grid grid-cols-12 gap-8 items-center opacity-80">
           <div className="col-span-12 lg:col-span-5 h-[400px] rounded-[3rem] overflow-hidden">
-            <img className="w-full h-full object-cover" alt="Kenyan entrepreneur" src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=1632&auto=format&fit=crop" />
+            <img className="w-full h-full object-cover" alt="Kenyan entrepreneur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkjRO604VEJ57P7as0iWXvGsWH23fE8DNcNj_QKUITBaQG5x8gwYBXTenFmJk6pB8CzrWdX6n8aowFlJnCfzAN0AVwCvZs2lcHVwtr1Ij4UptHjI4Wsfv9k8rprX_ih3hZqtY9EAhxIGM8hnmmgyx6ennV6YDoAndj2sl02rCLOT1gmllM-DZEHs7_dJ_dNw4spuOXLjWhk5UW2y61dAusvwyQmJ-NOr79vfIxUkUQHPK6Hq_-w4gJv3HndgNx64M41RDXAcRXbQ" referrerPolicy="no-referrer" />
           </div>
           <div className="col-span-12 lg:col-span-7 pl-0 lg:pl-12">
             <div className="inline-block px-4 py-2 bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold rounded-full mb-6 uppercase tracking-widest">Enterprise Ready</div>
