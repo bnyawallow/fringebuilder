@@ -17,7 +17,7 @@ export function Step4DesignContact({ state, updateState }: Step4DesignContactPro
   };
 
   return (
-    <main className="mr-0 md:mr-80 pt-24 pb-32 px-6 md:px-12 max-w-5xl">
+    <main className="mr-0 md:mr-80 pt-24 pb-48 md:pb-32 px-6 md:px-12 max-w-5xl">
       {/* Step 4: Design Section */}
       <section className="mb-20">
         <header className="mb-12">

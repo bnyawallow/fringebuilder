@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppState } from '../types';
 import { calculatePricing } from '../utils/pricing';
 
@@ -7,22 +7,23 @@ interface SideNavBarProps {
 }
 
 export function SideNavBar({ state }: SideNavBarProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const pricing = calculatePricing(state);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-KE').format(amount);
   };
 
-  return (
-    <aside className="fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-[#f6f3ee] dark:bg-slate-900 shadow-[24px_0_40px_rgba(109,57,20,0.06)] flex flex-col p-6 gap-4 z-40 transition-all duration-300 overflow-y-auto">
-      <div className="flex items-center justify-between mb-2">
+  const FullContent = () => (
+    <>
+      <div className="flex items-center justify-between mb-2 hidden md:flex">
         <span className="text-lg font-bold text-[#1c1c19] dark:text-white font-headline">Live Pricing</span>
         <span className="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2 py-0.5 rounded uppercase">KES</span>
       </div>
       
       <div className="space-y-4">
         {/* Nav Tabs */}
-        <div className="space-y-2">
+        <div className="space-y-2 hidden md:block">
           <div className={`flex items-center gap-3 p-3 rounded-lg font-['Inter'] text-sm transition-all ${state.step <= 3 ? 'border-l-4 border-[#006565] bg-[#ffffff] dark:bg-slate-800 text-[#006565] font-semibold' : 'text-[#3e4949] dark:text-slate-400 opacity-80 hover:bg-[#e5e2dd] dark:hover:bg-slate-800'}`}>
             <span className="material-symbols-outlined">build</span>
             <span>Features</span>
@@ -95,12 +96,57 @@ export function SideNavBar({ state }: SideNavBarProps) {
         </div>
       </div>
 
-      <div className="mt-auto pt-6 border-t border-outline-variant/20">
+      <div className="mt-auto pt-6 border-t border-outline-variant/20 hidden md:block">
         <div className="flex items-center gap-3 p-4 bg-white/40 dark:bg-slate-800/40 rounded-xl">
           <span className="material-symbols-outlined text-primary">lightbulb</span>
           <p className="text-xs text-on-surface-variant leading-tight">Most similar businesses choose the Growth package for better SEO reach.</p>
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="hidden md:flex fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-[#f6f3ee] dark:bg-slate-900 shadow-[24px_0_40px_rgba(109,57,20,0.06)] flex-col p-6 gap-4 z-40 transition-all duration-300 overflow-y-auto">
+        <FullContent />
+      </aside>
+
+      {/* Mobile Bottom Bar (Docked above FooterActionBar) */}
+      <div className="md:hidden fixed bottom-[96px] left-0 right-0 bg-[#f6f3ee] dark:bg-slate-900 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
+        
+        {/* Collapsed View / Toggle */}
+        <div 
+          className="flex items-center justify-between p-5 cursor-pointer"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <div className="flex flex-col">
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Total Price</span>
+            <span className="text-xl font-extrabold text-primary">KES {formatCurrency(pricing.total)}</span>
+          </div>
+          <div className="flex items-center gap-2 text-primary bg-primary/10 px-4 py-2 rounded-full">
+            <span className="text-sm font-bold">{isExpanded ? 'Hide Details' : 'View Details'}</span>
+            <span className={`material-symbols-outlined transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+              expand_less
+            </span>
+          </div>
+        </div>
+
+        {/* Expanded Overlay */}
+        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[60vh] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="p-5 pt-0 overflow-y-auto max-h-[60vh]">
+            <FullContent />
+          </div>
+        </div>
+      </div>
+      
+      {/* Overlay backdrop for mobile */}
+      {isExpanded && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/20 z-30 backdrop-blur-sm transition-opacity"
+          onClick={() => setIsExpanded(false)}
+        />
+      )}
+    </>
   );
 }

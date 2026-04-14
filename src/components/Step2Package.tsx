@@ -8,7 +8,7 @@ interface Step2PackageProps {
 
 export function Step2Package({ state, updateState }: Step2PackageProps) {
   return (
-    <main className="pt-24 pb-32 pr-0 md:pr-80 min-h-screen">
+    <main className="pt-24 pb-48 md:pb-32 pr-0 md:pr-80 min-h-screen">
       <div className="max-w-5xl mx-auto px-8">
         <header className="mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 2: Selection</span>

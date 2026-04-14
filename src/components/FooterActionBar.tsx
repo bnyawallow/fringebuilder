@@ -9,7 +9,7 @@ interface FooterActionBarProps {
 
 export function FooterActionBar({ step, onBack, onContinue, canContinue }: FooterActionBarProps) {
   const hasSidebar = step > 0 && step < 5;
-  const widthClass = hasSidebar ? 'w-[calc(100%-20rem)]' : 'w-full';
+  const widthClass = hasSidebar ? 'w-full md:w-[calc(100%-20rem)]' : 'w-full';
 
   return (
     <footer className={`fixed bottom-0 left-0 ${widthClass} p-6 bg-[#ffffff] dark:bg-slate-950 border-t border-[#bdc9c8]/15 flex justify-between items-center z-50 font-['Plus_Jakarta_Sans'] font-medium shadow-lg transition-all duration-300`}>

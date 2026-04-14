@@ -17,7 +17,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
   };
 
   return (
-    <main className="pt-24 pb-32 px-6 flex flex-col md:flex-row gap-8 max-w-[1440px] mx-auto">
+    <main className="pt-24 pb-48 md:pb-32 px-6 flex flex-col md:flex-row gap-8 max-w-[1440px] mx-auto">
       <div className="flex-1 space-y-12 pr-0 md:pr-80">
         <header className="max-w-2xl">
           <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 3: Features</span>

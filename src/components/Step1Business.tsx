@@ -17,7 +17,7 @@ export function Step1Business({ state, updateState }: Step1BusinessProps) {
   ];
 
   return (
-    <main className="pt-24 pb-48 pr-0 md:pr-80 min-h-screen">
+    <main className="pt-24 pb-48 md:pb-32 pr-0 md:pr-80 min-h-screen">
       <div className="max-w-4xl mx-auto px-8">
         <header className="mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">STEP 1: ABOUT YOU</span>
