@@ -14,10 +14,10 @@ export function Step5Quote({ state }: Step5QuoteProps) {
   };
 
   return (
-    <main className="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+    <main className="pt-24 pb-48 md:pb-32 px-6 pr-0 md:pr-80 max-w-7xl mx-auto">
       <div className="max-w-3xl mx-auto">
         <header className="mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 4: Review & Confirm</span>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 5: Review & Confirm</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight mb-4 font-headline">Your Quote Summary.</h1>
           <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Everything is ready. Review your selections below and secure your spot in our development queue.</p>
         </header>

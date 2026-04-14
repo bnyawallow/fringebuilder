@@ -5,10 +5,11 @@ interface FooterActionBarProps {
   onBack: () => void;
   onContinue: () => void;
   canContinue: boolean;
+  onNavigateStep?: (step: number) => void;
 }
 
-export function FooterActionBar({ step, onBack, onContinue, canContinue }: FooterActionBarProps) {
-  const hasSidebar = step > 0 && step < 5;
+export function FooterActionBar({ step, onBack, onContinue, canContinue, onNavigateStep }: FooterActionBarProps) {
+  const hasSidebar = step > 0 && step <= 5;
   const widthClass = hasSidebar ? 'w-full md:w-[calc(100%-20rem)]' : 'w-full';
 
   return (
@@ -21,12 +22,15 @@ export function FooterActionBar({ step, onBack, onContinue, canContinue }: Foote
         <span className="hidden md:inline">Back</span>
       </button>
       
-      {step > 0 && step < 5 && (
+      {step > 0 && step <= 5 && (
         <div className="flex gap-1.5 md:gap-2">
-          <div className={`h-2 ${step === 1 ? 'w-8 md:w-12 bg-primary' : 'w-4 md:w-8 bg-primary/20'} rounded-full transition-all duration-300`}></div>
-          <div className={`h-2 ${step === 2 ? 'w-8 md:w-12 bg-primary' : 'w-4 md:w-8 bg-primary/20'} rounded-full transition-all duration-300`}></div>
-          <div className={`h-2 ${step === 3 ? 'w-8 md:w-12 bg-primary' : 'w-4 md:w-8 bg-primary/20'} rounded-full transition-all duration-300`}></div>
-          <div className={`h-2 ${step === 4 ? 'w-8 md:w-12 bg-primary' : 'w-4 md:w-8 bg-primary/20'} rounded-full transition-all duration-300`}></div>
+          {[1, 2, 3, 4, 5].map((s) => (
+            <div 
+              key={s}
+              onClick={() => onNavigateStep && onNavigateStep(s)}
+              className={`h-2 ${step === s ? 'w-8 md:w-12 bg-primary' : 'w-4 md:w-8 bg-primary/20'} rounded-full transition-all duration-300 cursor-pointer hover:bg-primary/50`}
+            ></div>
+          ))}
         </div>
       )}
 

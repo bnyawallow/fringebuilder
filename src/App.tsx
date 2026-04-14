@@ -72,7 +72,7 @@ export default function App() {
     <div className="min-h-screen bg-background text-on-background">
       <TopNavBar step={state.step} />
       
-      {state.step > 0 && state.step < 5 && <SideNavBar state={state} />}
+      {state.step > 0 && state.step <= 5 && <SideNavBar state={state} updateState={updateState} />}
 
       {state.step === 0 && <Step0Landing state={state} updateState={updateState} onNext={handleNext} />}
       {state.step === 1 && <Step1Business state={state} updateState={updateState} />}
@@ -87,6 +87,7 @@ export default function App() {
           onBack={handleBack} 
           onContinue={handleNext} 
           canContinue={canContinue()} 
+          onNavigateStep={(s) => updateState({ step: s })}
         />
       )}
     </div>

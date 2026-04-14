@@ -4,9 +4,10 @@ import { calculatePricing } from '../utils/pricing';
 
 interface SideNavBarProps {
   state: AppState;
+  updateState?: (updates: Partial<AppState>) => void;
 }
 
-export function SideNavBar({ state }: SideNavBarProps) {
+export function SideNavBar({ state, updateState }: SideNavBarProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const pricing = calculatePricing(state);
 
@@ -23,19 +24,26 @@ export function SideNavBar({ state }: SideNavBarProps) {
       
       <div className="space-y-4">
         {/* Nav Tabs */}
-        <div className="space-y-2 hidden md:block">
-          <div className={`flex items-center gap-3 p-3 rounded-lg font-['Inter'] text-sm transition-all ${state.step <= 3 ? 'border-l-4 border-[#006565] bg-[#ffffff] dark:bg-slate-800 text-[#006565] font-semibold' : 'text-[#3e4949] dark:text-slate-400 opacity-80 hover:bg-[#e5e2dd] dark:hover:bg-slate-800'}`}>
-            <span className="material-symbols-outlined">build</span>
-            <span>Features</span>
-          </div>
-          <div className={`flex items-center gap-3 p-3 rounded-lg font-['Inter'] text-sm transition-all ${state.step === 4 ? 'border-l-4 border-[#006565] bg-[#ffffff] dark:bg-slate-800 text-[#006565] font-semibold' : 'text-[#3e4949] dark:text-slate-400 opacity-80 hover:bg-[#e5e2dd] dark:hover:bg-slate-800'}`}>
-            <span className="material-symbols-outlined">palette</span>
-            <span>Design</span>
-          </div>
-          <div className={`flex items-center gap-3 p-3 rounded-lg font-['Inter'] text-sm transition-all ${state.step === 5 ? 'border-l-4 border-[#006565] bg-[#ffffff] dark:bg-slate-800 text-[#006565] font-semibold' : 'text-[#3e4949] dark:text-slate-400 opacity-80 hover:bg-[#e5e2dd] dark:hover:bg-slate-800'}`}>
-            <span className="material-symbols-outlined">fact_check</span>
-            <span>Review</span>
-          </div>
+        <div className="space-y-2">
+          {[
+            { id: 1, icon: 'storefront', label: 'Business' },
+            { id: 2, icon: 'inventory_2', label: 'Package' },
+            { id: 3, icon: 'build', label: 'Features' },
+            { id: 4, icon: 'palette', label: 'Design' },
+            { id: 5, icon: 'fact_check', label: 'Summary' }
+          ].map((tab) => (
+            <div 
+              key={tab.id}
+              onClick={() => {
+                if (updateState) updateState({ step: tab.id });
+                setIsExpanded(false);
+              }}
+              className={`flex items-center gap-3 p-3 rounded-lg font-['Inter'] text-sm transition-all cursor-pointer ${state.step === tab.id ? 'border-l-4 border-[#006565] bg-[#ffffff] dark:bg-slate-800 text-[#006565] font-semibold' : 'text-[#3e4949] dark:text-slate-400 opacity-80 hover:bg-[#e5e2dd] dark:hover:bg-slate-800'}`}
+            >
+              <span className="material-symbols-outlined">{tab.icon}</span>
+              <span>{tab.label}</span>
+            </div>
+          ))}
         </div>
 
         {/* Current Selection Summary */}
