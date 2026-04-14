@@ -46,7 +46,7 @@ export function Step5Quote({ state }: Step5QuoteProps) {
                   <div className="flex flex-col">
                     <span className="font-semibold text-on-surface">{item.name}</span>
                   </div>
-                  <span className="font-bold text-on-surface whitespace-nowrap">KSh {formatCurrency(item.price)}</span>
+                  <span className="font-bold text-on-surface whitespace-nowrap">KSh {formatCurrency(item.price)}{item.isMonthly ? '/mo' : ''}</span>
                 </div>
               ))}
 
@@ -95,22 +95,28 @@ export function Step5Quote({ state }: Step5QuoteProps) {
             </div>
 
             <div className="flex flex-col gap-4">
-              <button className="flex items-center justify-between p-6 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-high transition-colors group">
+              <button 
+                onClick={() => window.print()}
+                className="flex items-center justify-between p-6 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-high transition-colors group"
+              >
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-secondary">picture_as_pdf</span>
                   <span className="font-semibold text-on-surface">Download Your Quote</span>
                 </div>
                 <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
               </button>
-              <button className="flex items-center justify-between p-6 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-high transition-colors group">
+              <a 
+                href="tel:+254116893804"
+                className="flex items-center justify-between p-6 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-high transition-colors group"
+              >
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-[#25D366]">chat</span>
                   <span className="font-semibold text-on-surface">Talk To Our Expert For FREE</span>
                 </div>
                 <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-              </button>
+              </a>
               <button className="w-full bg-gradient-to-br from-[#006565] to-[#008080] text-white rounded-full py-4 px-6 font-bold text-lg active:scale-95 transition-transform shadow-lg mt-2">
-                Send Me More Info
+                SIGN ME UP
               </button>
             </div>
           </div>

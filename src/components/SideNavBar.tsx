@@ -56,7 +56,7 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
           {pricing.featureItems.map((item, idx) => (
             <div key={idx} className="flex justify-between items-center text-sm">
               <span className="text-on-surface-variant">{item.name}</span>
-              <span className="font-bold">{formatCurrency(item.price)}</span>
+              <span className="font-bold">{formatCurrency(item.price)}{item.isMonthly ? '/mo' : ''}</span>
             </div>
           ))}
 
