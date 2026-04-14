@@ -84,27 +84,6 @@ export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) 
           </div>
         </div>
 
-        {/* Search & Suggestions Section */}
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-surface-container-high p-1 rounded-[2.5rem] shadow-sm mb-6 flex items-center relative group focus-within:ring-2 ring-primary/20 transition-all">
-            <div className="pl-6 text-on-surface-variant">
-              <span className="material-symbols-outlined">search</span>
-            </div>
-            <input className="w-full bg-transparent border-none focus:ring-0 py-5 px-4 text-xl font-medium placeholder:text-on-surface-variant/50 outline-none" placeholder="Or tell us exactly what you do..." type="text" />
-            <button className="bg-gradient-to-br from-[#006565] to-[#008080] text-white rounded-full px-10 py-4 font-bold mr-1 active:scale-95 transition-transform">
-              Start Building
-            </button>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="text-on-surface-variant font-medium text-sm mr-2">Try searching for:</span>
-            {['Grocery Store', 'Salon', 'Pharmacy', 'Law Firm', 'Photo Studio'].map((term) => (
-              <button key={term} className="px-5 py-2 bg-surface-container-lowest rounded-full border border-outline-variant/15 text-sm font-semibold hover:bg-primary-fixed transition-colors">
-                {term}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Decorative Visual */}
         <div className="mt-24 grid grid-cols-12 gap-8 items-center opacity-80">
           <div className="col-span-12 lg:col-span-5 h-[400px] rounded-[3rem] overflow-hidden">
