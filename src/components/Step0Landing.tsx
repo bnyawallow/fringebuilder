@@ -14,29 +14,25 @@ export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) 
   };
 
   return (
-    <main className="min-h-screen pt-24 pb-32 px-6 lg:px-12 kenyan-pattern">
-      <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20 mt-12 text-center lg:text-left">
-          <div className="relative z-10">
-            {/* Mobile Image (Top) */}
-            <div className="relative lg:hidden w-full h-[200px] rounded-[2rem] overflow-hidden shadow-xl mb-8">
-              <img alt="Successful Entrepreneur" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaBOJ2ygtPwZmD4-AHfsJcNkuauH1SccKHix7Sl8QaqH0B819CdhW_lDzRdBmedAqK1kqFuXpuUPl2PLbeDdBLO4C9TsVRstxMwM8l9FOgdPhm6KQbwqacjoot_PYwsDoz26TGIy2VtVwwoChMH0fbnxOtuQTuo5a2IRrrbDa4gbJTaGaKuppyDAO1O1MUw_o613QMU-lIXwHI2oxfhTbOb4FI7n9PAC-_cr1I7HNm3p_1et8rPnK3ycHpr3lBWZsUOJI_SlPt6w" referrerPolicy="no-referrer" />
-            </div>
+    <main className="min-h-screen pb-32 kenyan-pattern">
+      {/* Hero Background Image */}
+      <div 
+        className="w-full h-[200px] bg-cover bg-center relative" 
+        style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuCaBOJ2ygtPwZmD4-AHfsJcNkuauH1SccKHix7Sl8QaqH0B819CdhW_lDzRdBmedAqK1kqFuXpuUPl2PLbeDdBLO4C9TsVRstxMwM8l9FOgdPhm6KQbwqacjoot_PYwsDoz26TGIy2VtVwwoChMH0fbnxOtuQTuo5a2IRrrbDa4gbJTaGaKuppyDAO1O1MUw_o613QMU-lIXwHI2oxfhTbOb4FI7n9PAC-_cr1I7HNm3p_1et8rPnK3ycHpr3lBWZsUOJI_SlPt6w')` }}
+      >
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12">
+        {/* Hero Section */}
+        <div className="mb-20 text-center lg:text-left">
+          <div className="relative z-10">
             <h1 className="text-5xl lg:text-7xl font-headline font-extrabold text-on-surface tracking-tight leading-tight mb-6">
               What kind of <span className="text-primary">website</span><br/>do you need?
             </h1>
             <p className="text-lg text-on-surface-variant max-w-2xl font-medium mx-auto lg:mx-0">
               Select your journey below. We'll provide the specific tools, templates, and hosting infrastructure optimized for your business venture.
             </p>
-          </div>
-          <div className="relative hidden lg:block">
-            <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl">
-              <img alt="Successful Kenyan Entrepreneur" className="w-full h-[400px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaBOJ2ygtPwZmD4-AHfsJcNkuauH1SccKHix7Sl8QaqH0B819CdhW_lDzRdBmedAqK1kqFuXpuUPl2PLbeDdBLO4C9TsVRstxMwM8l9FOgdPhm6KQbwqacjoot_PYwsDoz26TGIy2VtVwwoChMH0fbnxOtuQTuo5a2IRrrbDa4gbJTaGaKuppyDAO1O1MUw_o613QMU-lIXwHI2oxfhTbOb4FI7n9PAC-_cr1I7HNm3p_1et8rPnK3ycHpr3lBWZsUOJI_SlPt6w" referrerPolicy="no-referrer" />
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-fixed rounded-full -z-0 opacity-20"></div>
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary-fixed rounded-2xl -z-0 opacity-20"></div>
           </div>
         </div>
 

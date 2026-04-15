@@ -33,7 +33,7 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
           {pricing.featureItems.map((item, idx) => (
             <div key={idx} className="flex justify-between items-center text-sm">
               <span className="text-on-surface-variant">{item.name}</span>
-              <span className="font-bold">{formatCurrency(item.price)}{item.isMonthly ? '/mo' : ''}</span>
+              <span className="font-bold">{item.price === 0 ? 'Included' : formatCurrency(item.price)}{item.price > 0 && item.isMonthly ? '/mo' : ''}</span>
             </div>
           ))}
 
@@ -98,7 +98,7 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
       </aside>
 
       {/* Mobile Bottom Bar (Docked above FooterActionBar) */}
-      <div className="md:hidden fixed bottom-[72px] left-0 right-0 bg-[#f6f3ee] shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
+      <div className="md:hidden fixed bottom-[80px] left-0 right-0 bg-[#f6f3ee] shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
         
         {/* Collapsed View / Toggle */}
         <div 
