@@ -60,9 +60,9 @@ export default function App() {
       case 2:
         return state.packageTier !== null;
       case 3:
-        return true; // Features are optional
+        return true; // Hosting is pre-selected, so an option is always selected
       case 4:
-        return state.designMood !== null && state.contact.fullName !== '' && state.contact.email !== '';
+        return state.designMood !== null && state.contact.fullName !== '' && state.contact.email !== '' && state.contentProvider !== null && state.carePackage !== null;
       default:
         return true;
     }

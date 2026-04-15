@@ -37,10 +37,9 @@ export function FooterActionBar({ step, onBack, onContinue, canContinue, onNavig
       <button 
         onClick={onContinue}
         disabled={!canContinue}
-        className={`bg-gradient-to-br from-[#006565] to-[#008080] text-white rounded-full w-12 h-12 md:w-auto md:h-auto md:px-8 md:py-3 hover:opacity-90 transition-opacity active:scale-95 flex items-center justify-center ${!canContinue ? 'opacity-50 cursor-not-allowed' : ''} ${step === 5 ? 'invisible' : ''}`}
+        className={`bg-gradient-to-br from-[#006565] to-[#008080] text-white rounded-full px-6 py-3 md:px-8 md:py-3 font-bold hover:opacity-90 transition-all active:scale-95 flex items-center justify-center ${!canContinue ? 'opacity-50 cursor-not-allowed' : 'shadow-lg shadow-primary/40 ring-2 ring-primary/20 ring-offset-1 dark:ring-offset-slate-950'} ${step === 5 ? 'invisible' : ''}`}
       >
-        <span className="hidden md:inline">Continue</span>
-        <span className="material-symbols-outlined md:hidden">arrow_forward</span>
+        <span>Proceed</span>
       </button>
     </footer>
   );
