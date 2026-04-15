@@ -18,13 +18,13 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
   const FullContent = () => (
     <>
       <div className="flex items-center justify-between mb-2 hidden md:flex">
-        <span className="text-lg font-bold text-[#1c1c19] dark:text-white font-headline">Live Estimate</span>
+        <span className="text-lg font-bold text-[#1c1c19] font-headline">Live Estimate</span>
         <span className="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2 py-0.5 rounded uppercase">KES</span>
       </div>
       
       <div className="space-y-4">
         {/* Current Selection Summary */}
-        <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm space-y-3">
+        <div className="bg-white p-4 rounded-xl shadow-sm space-y-3">
           <div className="flex justify-between items-center text-sm">
             <span className="text-on-surface-variant">{pricing.baseName}</span>
             <span className="font-bold">{formatCurrency(pricing.basePrice)}</span>
@@ -81,8 +81,8 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
         </div>
       </div>
 
-      <div className="mt-auto pt-6 border-t border-outline-variant/20 hidden md:block">
-        <div className="flex items-center gap-3 p-4 bg-white/40 dark:bg-slate-800/40 rounded-xl">
+      <div className="mt-auto pt-6 border-t border-outline-variant/20 hidden md:flex">
+        <div className="flex items-center gap-3 p-4 bg-white/40 rounded-xl">
           <span className="material-symbols-outlined text-primary">lightbulb</span>
           <p className="text-xs text-on-surface-variant leading-tight">Most similar businesses choose the Growth package for better SEO reach.</p>
         </div>
@@ -93,12 +93,12 @@ export function SideNavBar({ state, updateState }: SideNavBarProps) {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-[#f6f3ee] dark:bg-slate-900 shadow-[24px_0_40px_rgba(109,57,20,0.06)] flex-col p-6 gap-4 z-40 transition-all duration-300 overflow-y-auto">
+      <aside className="hidden md:flex fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-[#f6f3ee] shadow-[24px_0_40px_rgba(109,57,20,0.06)] flex-col p-6 gap-4 z-40 transition-all duration-300 overflow-y-auto">
         <FullContent />
       </aside>
 
       {/* Mobile Bottom Bar (Docked above FooterActionBar) */}
-      <div className="md:hidden fixed bottom-[72px] left-0 right-0 bg-[#f6f3ee] dark:bg-slate-900 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
+      <div className="md:hidden fixed bottom-[72px] left-0 right-0 bg-[#f6f3ee] shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 rounded-t-3xl transition-all duration-300 border-t border-outline-variant/20">
         
         {/* Collapsed View / Toggle */}
         <div 
