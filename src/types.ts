@@ -26,8 +26,10 @@ export interface AppState {
   primaryColor: string | null;
   secondaryColor: string | null;
   hasLogo: boolean | null;
+  logoName: string | null;
   referenceWebsites: string;
   contentProvider: 'self' | 'ai' | 'copywriter' | null;
+  wantsCarePackage: boolean;
   carePackage: 'basic' | 'growth' | 'commerce' | 'none' | null;
   contact: {
     fullName: string;

@@ -23,7 +23,7 @@ export function FooterActionBar({ step, onBack, onContinue, canContinue, onNavig
       </button>
       
       {step > 0 && step <= 6 && (
-        <div className="hidden md:flex gap-1.5 md:gap-2">
+        <div className="flex gap-1.5 md:gap-2">
           {[1, 2, 3, 4, 5, 6].map((s) => (
             <div 
               key={s}

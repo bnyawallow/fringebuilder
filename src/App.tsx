@@ -14,10 +14,10 @@ import { Step6Quote } from './components/Step6Quote';
 export default function App() {
   const [state, setState] = useState<AppState>({
     step: 0,
-    journey: null,
-    category: null,
+    journey: 'creator',
+    category: 'Artist',
     otherCategory: '',
-    packageTier: null,
+    packageTier: 'starter',
     features: {
       premiumGallery: false,
       socialMedia: false,
@@ -36,13 +36,15 @@ export default function App() {
       speedCdn: false,
     },
     hosting: 'standard',
-    designMood: null,
-    primaryColor: null,
-    secondaryColor: null,
-    hasLogo: null,
+    designMood: 'modern',
+    primaryColor: '#006565',
+    secondaryColor: '#f6f3ee',
+    hasLogo: false,
+    logoName: null,
     referenceWebsites: '',
-    contentProvider: null,
-    carePackage: null,
+    contentProvider: 'self',
+    wantsCarePackage: false,
+    carePackage: 'basic',
     contact: {
       fullName: '',
       businessName: '',
@@ -76,7 +78,11 @@ export default function App() {
       case 4:
         return state.designMood !== null && state.primaryColor !== null && state.secondaryColor !== null;
       case 5:
-        return state.contentProvider !== null && state.carePackage !== null && state.contact.fullName !== '' && state.contact.email !== '';
+        const hasContentProvider = state.contentProvider !== null;
+        const hasCarePackage = !state.wantsCarePackage || state.carePackage !== null;
+        const hasName = state.journey === 'creator' ? state.contact.fullName.trim() !== '' : state.contact.businessName.trim() !== '';
+        const hasEmail = state.contact.email.trim() !== '' && state.contact.email.includes('@');
+        return hasContentProvider && hasCarePackage && hasName && hasEmail;
       default:
         return true;
     }

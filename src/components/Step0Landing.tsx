@@ -9,7 +9,11 @@ interface Step0LandingProps {
 
 export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) {
   const handleSelectJourney = (journey: 'creator' | 'business') => {
-    updateState({ journey });
+    updateState({ 
+      journey,
+      category: journey === 'creator' ? 'Artist' : 'Grocery Store',
+      packageTier: 'starter'
+    });
     onNext();
   };
 

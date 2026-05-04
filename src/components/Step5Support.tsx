@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { AppState } from '../types';
 
 interface Step5SupportProps {
@@ -7,6 +7,9 @@ interface Step5SupportProps {
 }
 
 export function Step5Support({ state, updateState }: Step5SupportProps) {
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const updateContact = (field: keyof AppState['contact'], value: string) => {
     updateState({
       contact: {
@@ -17,6 +20,38 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
   };
 
   const isCommerce = state.packageTier === 'commerce';
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      updateState({ logoName: e.dataTransfer.files[0].name });
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      updateState({ logoName: e.target.files[0].name });
+    }
+  };
+
+  const removeLogo = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    updateState({ logoName: null });
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   return (
     <main className="mr-0 md:mr-80 pt-24 pb-48 md:pb-32 px-6 md:px-12 max-w-5xl">
@@ -75,47 +110,60 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
             </div>
 
             <div>
-              <h4 className="font-headline font-bold text-lg mb-4 flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary">verified_user</span>
-                Monthly Care Package
-              </h4>
-              <p className="text-sm text-on-surface-variant mb-4">Updates, security, and premium hosting included. No hidden fees.</p>
-              <div className="space-y-3">
-                <button 
-                  onClick={() => updateState({ carePackage: 'basic' })}
-                  className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${state.carePackage === 'basic' ? 'bg-primary/5 border-2 border-primary shadow-sm' : 'bg-surface-container-lowest hover:border-primary/50 border-2 border-outline-variant/30'}`}
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h4 className="font-headline font-bold text-lg flex items-center gap-2">
+                    <span className="material-symbols-outlined text-primary">verified_user</span>
+                    Monthly Care Package
+                  </h4>
+                  <p className="text-sm text-on-surface-variant mt-1">Updates, security, and premium hosting included. No hidden fees.</p>
+                </div>
+                <button
+                  onClick={() => updateState({ wantsCarePackage: !state.wantsCarePackage, carePackage: !state.wantsCarePackage ? state.carePackage : null })}
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${state.wantsCarePackage ? 'bg-primary' : 'bg-outline-variant'}`}
                 >
-                  <div>
-                    <span className={`font-medium block ${state.carePackage === 'basic' ? 'text-primary font-bold' : 'text-on-surface'}`}>Basic</span>
-                    <span className="text-xs text-on-surface-variant">Essential maintenance</span>
-                  </div>
-                  <span className={`font-bold ${state.carePackage === 'basic' ? 'text-primary' : 'text-on-surface'}`}>KSh 2,800/mo</span>
+                  <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${state.wantsCarePackage ? 'translate-x-6' : 'translate-x-1'}`} />
                 </button>
-
-                <button 
-                  onClick={() => updateState({ carePackage: 'growth' })}
-                  className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${state.carePackage === 'growth' ? 'bg-primary/5 border-2 border-primary shadow-sm' : 'bg-surface-container-lowest hover:border-primary/50 border-2 border-outline-variant/30'}`}
-                >
-                  <div>
-                    <span className={`font-medium block ${state.carePackage === 'growth' ? 'text-primary font-bold' : 'text-on-surface'}`}>Growth</span>
-                    <span className="text-xs text-on-surface-variant">Priority support & updates</span>
-                  </div>
-                  <span className={`font-bold ${state.carePackage === 'growth' ? 'text-primary' : 'text-on-surface'}`}>KSh 5,500/mo</span>
-                </button>
-
-                {isCommerce && (
+              </div>
+              
+              {state.wantsCarePackage && (
+                <div className="space-y-3 animate-in fade-in slide-in-from-top-2">
                   <button 
-                    onClick={() => updateState({ carePackage: 'commerce' })}
-                    className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${state.carePackage === 'commerce' ? 'bg-primary/5 border-2 border-primary shadow-sm' : 'bg-surface-container-lowest hover:border-primary/50 border-2 border-outline-variant/30'}`}
+                    onClick={() => updateState({ carePackage: 'basic' })}
+                    className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${state.carePackage === 'basic' ? 'bg-primary/5 border-2 border-primary shadow-sm' : 'bg-surface-container-lowest hover:border-primary/50 border-2 border-outline-variant/30'}`}
                   >
                     <div>
-                      <span className={`font-medium block ${state.carePackage === 'commerce' ? 'text-primary font-bold' : 'text-on-surface'}`}>Commerce</span>
-                      <span className="text-xs text-on-surface-variant">Full e-commerce management</span>
+                      <span className={`font-medium block ${state.carePackage === 'basic' ? 'text-primary font-bold' : 'text-on-surface'}`}>Basic</span>
+                      <span className="text-xs text-on-surface-variant">Essential maintenance</span>
                     </div>
-                    <span className={`font-bold ${state.carePackage === 'commerce' ? 'text-primary' : 'text-on-surface'}`}>KSh 12,500/mo</span>
+                    <span className={`font-bold ${state.carePackage === 'basic' ? 'text-primary' : 'text-on-surface'}`}>KSh 2,800/mo</span>
                   </button>
-                )}
-              </div>
+
+                  <button 
+                    onClick={() => updateState({ carePackage: 'growth' })}
+                    className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${state.carePackage === 'growth' ? 'bg-primary/5 border-2 border-primary shadow-sm' : 'bg-surface-container-lowest hover:border-primary/50 border-2 border-outline-variant/30'}`}
+                  >
+                    <div>
+                      <span className={`font-medium block ${state.carePackage === 'growth' ? 'text-primary font-bold' : 'text-on-surface'}`}>Growth</span>
+                      <span className="text-xs text-on-surface-variant">Priority support & updates</span>
+                    </div>
+                    <span className={`font-bold ${state.carePackage === 'growth' ? 'text-primary' : 'text-on-surface'}`}>KSh 5,500/mo</span>
+                  </button>
+
+                  {isCommerce && (
+                    <button 
+                      onClick={() => updateState({ carePackage: 'commerce' })}
+                      className={`w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between group ${state.carePackage === 'commerce' ? 'bg-primary/5 border-2 border-primary shadow-sm' : 'bg-surface-container-lowest hover:border-primary/50 border-2 border-outline-variant/30'}`}
+                    >
+                      <div>
+                        <span className={`font-medium block ${state.carePackage === 'commerce' ? 'text-primary font-bold' : 'text-on-surface'}`}>Commerce</span>
+                        <span className="text-xs text-on-surface-variant">Full e-commerce management</span>
+                      </div>
+                      <span className={`font-bold ${state.carePackage === 'commerce' ? 'text-primary' : 'text-on-surface'}`}>KSh 12,500/mo</span>
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -126,28 +174,41 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
               Your Details
             </h4>
             <div className="grid grid-cols-1 gap-4">
+              {state.journey === 'creator' ? (
+                <div>
+                  <label className="block text-sm font-medium text-on-surface-variant mb-2">Full Name *</label>
+                  <input 
+                    type="text" 
+                    value={state.contact.fullName}
+                    onChange={(e) => updateContact('fullName', e.target.value)}
+                    className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
+                    placeholder="e.g. Kwame Otieno" 
+                  />
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-sm font-medium text-on-surface-variant mb-2">Business / Brand Name *</label>
+                  <input 
+                    type="text" 
+                    value={state.contact.businessName}
+                    onChange={(e) => updateContact('businessName', e.target.value)}
+                    className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
+                    placeholder="The Coffee Workshop" 
+                  />
+                </div>
+              )}
               <div>
-                <label className="block text-sm font-medium text-on-surface-variant mb-2">Full Name</label>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">Email Address *</label>
                 <input 
-                  type="text" 
-                  value={state.contact.fullName}
-                  onChange={(e) => updateContact('fullName', e.target.value)}
+                  type="email" 
+                  value={state.contact.email}
+                  onChange={(e) => updateContact('email', e.target.value)}
                   className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
-                  placeholder="e.g. Kwame Otieno" 
+                  placeholder="kwame@workshop.co.ke" 
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-on-surface-variant mb-2">Business / Brand Name</label>
-                <input 
-                  type="text" 
-                  value={state.contact.businessName}
-                  onChange={(e) => updateContact('businessName', e.target.value)}
-                  className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
-                  placeholder="The Coffee Workshop" 
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-on-surface-variant mb-2">WhatsApp Number</label>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">WhatsApp Number (Optional)</label>
                 <div className="flex gap-2">
                   <div className="bg-surface-container-low rounded-xl px-3 flex items-center text-sm font-bold text-on-surface-variant border border-outline-variant/50">+254</div>
                   <input 
@@ -158,16 +219,6 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                     placeholder="712 345 678" 
                   />
                 </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-on-surface-variant mb-2">Email Address</label>
-                <input 
-                  type="email" 
-                  value={state.contact.email}
-                  onChange={(e) => updateContact('email', e.target.value)}
-                  className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
-                  placeholder="kwame@workshop.co.ke" 
-                />
               </div>
             </div>
             <div className="pt-4">
@@ -185,10 +236,40 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
               </label>
               
               {state.hasLogo && (
-                <div className="mt-4 p-8 border-2 border-dashed border-outline-variant rounded-2xl flex flex-col items-center justify-center text-center bg-surface-container-lowest/50 group hover:bg-white transition-all cursor-pointer">
-                  <span className="material-symbols-outlined text-4xl text-outline mb-2 group-hover:text-primary transition-colors">upload_file</span>
-                  <p className="text-sm text-on-surface-variant">Drag and drop your logo here, or <span className="text-primary font-bold">browse</span></p>
-                  <p className="text-[10px] text-outline mt-1 uppercase tracking-widest">SVG, PNG or AI (Max 5MB)</p>
+                <div 
+                  className={`mt-4 p-8 border-2 border-dashed rounded-2xl flex flex-col items-center justify-center text-center transition-all cursor-pointer ${isDragging ? 'border-primary bg-primary/10' : 'border-outline-variant bg-surface-container-lowest/50 hover:bg-white'}`}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <input
+                    type="file"
+                    className="hidden"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    accept=".svg,.png,.ai,image/png,image/svg+xml"
+                  />
+                  {state.logoName ? (
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                        <span className="material-symbols-outlined text-primary text-2xl">check_circle</span>
+                      </div>
+                      <p className="text-sm font-bold text-on-surface mb-1 truncate max-w-[200px]">{state.logoName}</p>
+                      <button 
+                        onClick={removeLogo}
+                        className="text-xs text-error font-medium hover:underline mt-2 px-3 py-1 bg-error/10 rounded-full"
+                      >
+                        Remove Logo
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <span className="material-symbols-outlined text-4xl text-outline mb-2 group-hover:text-primary transition-colors pointer-events-none">upload_file</span>
+                      <p className="text-sm text-on-surface-variant pointer-events-none">Drag and drop your logo here, or <span className="text-primary font-bold">browse</span></p>
+                      <p className="text-[10px] text-outline mt-1 uppercase tracking-widest pointer-events-none">SVG, PNG or AI (Max 5MB)</p>
+                    </>
+                  )}
                 </div>
               )}
             </div>

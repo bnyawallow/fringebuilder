@@ -12,13 +12,9 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
   // Auto-select logic
   useEffect(() => {
     if (!state.packageTier) {
-      if (isCreator) {
-        updateState({ packageTier: 'starter' });
-      } else {
-        updateState({ packageTier: 'growth' });
-      }
+      updateState({ packageTier: 'starter' });
     }
-  }, [isCreator, state.packageTier, updateState]);
+  }, [state.packageTier, updateState]);
 
   const packages = isCreator ? [
     {
