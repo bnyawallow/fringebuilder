@@ -40,9 +40,17 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
         </header>
 
         {/* Moodboard Bento Grid */}
-        <div className="grid grid-cols-12 gap-4 mb-12">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+          className="grid grid-cols-12 gap-4 mb-12"
+        >
           {/* Modern Card */}
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             onClick={() => updateState({ designMood: 'modern' })}
             className={`col-span-12 lg:col-span-4 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'modern' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
@@ -56,10 +64,13 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
                 <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Bold Card */}
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             onClick={() => updateState({ designMood: 'bold' })}
             className={`col-span-12 lg:col-span-8 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'bold' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
@@ -75,10 +86,13 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
                 <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Warm Kenyan Card */}
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             onClick={() => updateState({ designMood: 'warm' })}
             className={`col-span-12 lg:col-span-5 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'warm' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
@@ -92,10 +106,13 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
                 <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Professional Card */}
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             onClick={() => updateState({ designMood: 'professional' })}
             className={`col-span-12 lg:col-span-3 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'professional' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
@@ -109,10 +126,13 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
                 <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Minimal Card */}
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             onClick={() => updateState({ designMood: 'minimal' })}
             className={`col-span-12 lg:col-span-4 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'minimal' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
@@ -126,8 +146,8 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
                 <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
               </div>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Color Palette Picker */}

@@ -106,12 +106,20 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
           </motion.p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.15, delayChildren: 0.3 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"
+        >
           {packages.map((pkg) => {
             const isSelected = state.packageTier === pkg.id;
             return (
-              <div 
+              <motion.div 
                 key={pkg.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
                 onClick={() => updateState({ packageTier: pkg.id as any })}
                 className={`bg-surface-container-lowest rounded-[2rem] p-8 shadow-sm flex flex-col h-full relative transition-all duration-300 cursor-pointer hover:translate-y-[-4px] ${isSelected ? 'border-t-[12px] border-primary shadow-lg scale-105 z-10' : 'border-t-[12px] border-surface-container-highest'}`}
               >
@@ -146,10 +154,10 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
                 <button className={`mt-8 w-full py-4 rounded-xl font-bold transition-colors ${isSelected ? 'text-white bg-primary' : 'text-on-surface bg-surface-container-highest hover:bg-outline-variant'}`}>
                   {isSelected ? 'Selected' : `Select ${pkg.name}`}
                 </button>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </main>
   );

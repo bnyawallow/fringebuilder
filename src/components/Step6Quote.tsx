@@ -45,8 +45,18 @@ export function Step6Quote({ state }: Step6QuoteProps) {
           </motion.p>
         </header>
 
-        <div className="grid grid-cols-1 gap-6 mb-12">
-          <div className="bg-surface-container-lowest rounded-2xl p-8 sunlight-shadow overflow-hidden relative">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+          className="grid grid-cols-1 gap-6 mb-12"
+        >
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-surface-container-lowest rounded-2xl p-8 sunlight-shadow overflow-hidden relative"
+          >
             <div className="absolute top-0 right-0 p-4 opacity-5">
               <span className="material-symbols-outlined text-9xl">receipt_long</span>
             </div>
@@ -104,10 +114,15 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-surface-container-lowest border-2 border-primary/10 rounded-2xl p-8 flex flex-col justify-between hover:border-primary/40 transition-colors">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="bg-surface-container-lowest border-2 border-primary/10 rounded-2xl p-8 flex flex-col justify-between hover:border-primary/40 transition-colors"
+            >
               <div>
                 <div className="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center mb-6">
                   <span className="material-symbols-outlined text-on-secondary-container">payments</span>
@@ -119,9 +134,14 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 <span className="material-symbols-outlined">phone_iphone</span>
                 Pay with M-PESA
               </button>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-4 h-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col gap-4 h-full"
+            >
               <button 
                 onClick={() => window.print()}
                 className="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-transparent hover:border-primary/20 rounded-2xl transition-all group shrink-0"
@@ -162,9 +182,9 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                   </label>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </main>
   );

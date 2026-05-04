@@ -26,7 +26,12 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
   };
 
   const FeatureCard = ({ id, icon, title, desc, price, badge }: { id: keyof AppState['features'], icon: string, title: string, desc: string, price: number, badge?: string }) => (
-    <label className="group cursor-pointer">
+    <motion.label 
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="group cursor-pointer"
+    >
       <input type="checkbox" className="hidden peer" checked={state.features[id]} onChange={() => toggleFeature(id)} />
       <div className="bg-surface-container-lowest peer-checked:bg-primary/5 border-2 border-transparent peer-checked:border-primary p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 relative">
         {badge && (
@@ -47,7 +52,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
           <span className={`font-bold text-sm ${price === 0 ? 'text-secondary' : 'text-primary'}`}>{formatPrice(price)}</span>
         </div>
       </div>
-    </label>
+    </motion.label>
   );
 
   return (
@@ -87,7 +92,12 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
               <span className="material-symbols-outlined">star</span>
               Recommended for you
             </h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-4"
+            >
               {isCreator ? (
                 <>
                   <FeatureCard id="premiumGallery" icon="photo_library" title="Premium Image / Portfolio Gallery" desc="Enhanced layouts for your work." price={0} />
@@ -109,7 +119,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
                   <FeatureCard id="seo" icon="travel_explore" title="Basic SEO Optimization" desc="Rank higher on Google." price={8000} badge="Popular" />
                 </>
               )}
-            </div>
+            </motion.div>
           </section>
 
           <section>

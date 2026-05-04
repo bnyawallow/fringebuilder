@@ -76,12 +76,20 @@ export function Step1Category({ state, updateState }: Step1CategoryProps) {
           </motion.p>
         </header>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
+        >
           {categories.map((cat) => {
             const isSelected = state.category === cat.id;
             return (
-              <div 
+              <motion.div 
                 key={cat.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
                 onClick={() => handleCategorySelect(cat.id)}
                 className={`group relative overflow-hidden bg-surface-container-lowest rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer active:scale-95 flex flex-col items-center text-center ${isSelected ? 'border-2 border-primary bg-primary/5' : 'border border-outline-variant/30 hover:border-primary/50'}`}
               >
@@ -94,10 +102,10 @@ export function Step1Category({ state, updateState }: Step1CategoryProps) {
                   </div>
                 )}
                 <h3 className="font-headline text-sm font-bold">{cat.title}</h3>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {state.category === 'Other' && (
           <div className="mb-16 animate-in fade-in slide-in-from-bottom-4">
