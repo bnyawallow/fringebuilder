@@ -48,10 +48,33 @@ interface Step6QuoteProps {
 
 export function Step6Quote({ state }: Step6QuoteProps) {
   const [showTerms, setShowTerms] = useState(false);
+  const [hasAcceptedTerms, setHasAcceptedTerms] = useState(false);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const pricing = calculatePricing(state);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-KE').format(amount);
+  };
+
+  const handleDownloadPDF = async () => {
+    if (!hasAcceptedTerms) return;
+    setIsGeneratingPDF(true);
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      const element = document.getElementById('estimate-content');
+      const opt = {
+        margin:       0.5,
+        filename:     `Estimate - ${state.contact.fullName || 'Client'}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      await html2pdf().set(opt).from(element).save();
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    } finally {
+      setIsGeneratingPDF(false);
+    }
   };
 
   return (
@@ -90,6 +113,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
           animate={{ opacity: 1 }}
           transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
           className="grid grid-cols-1 gap-6 mb-12"
+          id="estimate-content"
         >
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
@@ -156,6 +180,23 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             </div>
           </motion.div>
 
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mb-8 p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30 flex items-center justify-between shadow-sm cursor-pointer hover:bg-surface-container hover:border-primary/30 transition-all group"
+            onClick={() => setHasAcceptedTerms(!hasAcceptedTerms)}
+          >
+            <div className="flex items-start md:items-center gap-4">
+              <div className={`w-6 h-6 mt-1 md:mt-0 rounded border flex items-center justify-center shrink-0 transition-colors ${hasAcceptedTerms ? 'bg-primary border-primary text-on-primary' : 'border-outline-variant bg-surface-container-lowest text-transparent'}`}>
+                <span className="material-symbols-outlined text-[18px]">check</span>
+              </div>
+              <p className="text-sm md:text-base font-medium text-on-surface select-none">
+                I accept the <button type="button" onClick={(e) => { e.stopPropagation(); setShowTerms(true); }} className="text-primary underline hover:text-primary/80 font-bold">Terms and Conditions</button> to proceed with downloading the estimate or securing my project.
+              </p>
+            </div>
+          </motion.div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 15 }}
@@ -170,7 +211,10 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 <h3 className="font-headline font-bold text-xl mb-2 text-on-surface">Secure Your Project</h3>
                 <p className="text-sm text-on-surface-variant mb-6">A 30% deposit is required to lock in your project date and start the design phase.</p>
               </div>
-              <button className="w-full bg-[#52B44B] hover:bg-[#429E3B] text-white rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-colors active:scale-95 shadow-sm">
+              <button 
+                disabled={!hasAcceptedTerms}
+                className={`w-full rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-all shadow-sm ${hasAcceptedTerms ? 'bg-[#52B44B] hover:bg-[#429E3B] text-white active:scale-95' : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant opacity-50 cursor-not-allowed'}`}
+              >
                 <span className="material-symbols-outlined">phone_iphone</span>
                 Pay with M-PESA
               </button>
@@ -183,19 +227,22 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               className="flex flex-col gap-4 h-full"
             >
               <button 
-                onClick={() => window.print()}
-                className="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-transparent hover:border-primary/20 rounded-2xl transition-all group shrink-0"
+                onClick={handleDownloadPDF}
+                disabled={!hasAcceptedTerms || isGeneratingPDF}
+                className={`flex items-center justify-between p-5 bg-surface-container-lowest border-2 rounded-2xl transition-all shrink-0 ${hasAcceptedTerms && !isGeneratingPDF ? 'border-transparent hover:border-primary/20 cursor-pointer group' : 'border-outline-variant/30 opacity-50 cursor-not-allowed'}`}
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center">
-                    <span className="material-symbols-outlined text-on-secondary-container">download</span>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${hasAcceptedTerms && !isGeneratingPDF ? 'bg-secondary-fixed text-on-secondary-container group-hover:bg-primary/10 group-hover:text-primary transition-colors' : 'bg-surface-container text-on-surface-variant'}`}>
+                    <span className="material-symbols-outlined">
+                      {isGeneratingPDF ? 'hourglass_empty' : 'download'}
+                    </span>
                   </div>
                   <div className="flex flex-col items-start">
                     <span className="font-bold text-lg text-on-surface">Download Estimate</span>
-                    <span className="text-sm text-on-surface-variant">Save a PDF copy for your records</span>
+                    <span className="text-sm text-on-surface-variant">{isGeneratingPDF ? "Generating PDF..." : "Save a PDF copy for your records"}</span>
                   </div>
                 </div>
-                <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1">arrow_forward</span>
+                <span className={`material-symbols-outlined transition-all transform ${hasAcceptedTerms && !isGeneratingPDF ? 'opacity-0 group-hover:opacity-100 group-hover:translate-x-1 text-on-surface' : 'opacity-0'} `}>arrow_forward</span>
               </button>
 
               <div className="flex-1 bg-surface-container-lowest rounded-2xl p-6 border-2 border-transparent hover:border-[#25D366]/20 transition-colors flex flex-col justify-between gap-6">
@@ -216,12 +263,6 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                     <span className="material-symbols-outlined">chat</span>
                     Chat With Us
                   </a>
-                  <label className="flex items-center gap-2 cursor-pointer w-full justify-center group py-1">
-                    <input type="checkbox" defaultChecked className="w-5 h-5 rounded border-outline-variant text-primary accent-primary cursor-pointer" />
-                    <span className="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors select-none">
-                      Accept our <button type="button" onClick={(e) => { e.preventDefault(); setShowTerms(true); }} className="text-primary underline hover:text-primary/80">terms and conditions</button>
-                    </span>
-                  </label>
                 </div>
               </div>
             </motion.div>
