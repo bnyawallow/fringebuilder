@@ -183,6 +183,8 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                     onChange={(e) => updateContact('fullName', e.target.value)}
                     className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
                     placeholder="e.g. Kwame Otieno" 
+                    autoComplete="name"
+                    required
                   />
                 </div>
               ) : (
@@ -194,6 +196,8 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                     onChange={(e) => updateContact('businessName', e.target.value)}
                     className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
                     placeholder="The Coffee Workshop" 
+                    autoComplete="organization"
+                    required
                   />
                 </div>
               )}
@@ -205,6 +209,9 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                   onChange={(e) => updateContact('email', e.target.value)}
                   className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
                   placeholder="kwame@workshop.co.ke" 
+                  autoComplete="email"
+                  pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                  required
                 />
               </div>
               <div>
@@ -217,6 +224,8 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                     onChange={(e) => updateContact('whatsapp', e.target.value)}
                     className="flex-1 bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
                     placeholder="712 345 678" 
+                    autoComplete="tel-local"
+                    pattern="[0-9\s\-]+"
                   />
                 </div>
               </div>

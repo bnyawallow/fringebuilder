@@ -80,9 +80,15 @@ export default function App() {
       case 5:
         const hasContentProvider = state.contentProvider !== null;
         const hasCarePackage = !state.wantsCarePackage || state.carePackage !== null;
-        const hasName = state.journey === 'creator' ? state.contact.fullName.trim() !== '' : state.contact.businessName.trim() !== '';
-        const hasEmail = state.contact.email.trim() !== '' && state.contact.email.includes('@');
-        return hasContentProvider && hasCarePackage && hasName && hasEmail;
+        const hasName = state.journey === 'creator' 
+          ? state.contact.fullName.trim().length >= 2 
+          : state.contact.businessName.trim().length >= 2;
+        const hasEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.contact.email.trim());
+        
+        const cleanWhatsapp = state.contact.whatsapp.replace(/[\s\-\+]/g, '');
+        const hasValidPhone = cleanWhatsapp === '' || /^\d{9,15}$/.test(cleanWhatsapp);
+
+        return hasContentProvider && hasCarePackage && hasName && hasEmail && hasValidPhone;
       default:
         return true;
     }

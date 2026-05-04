@@ -92,32 +92,53 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 <h3 className="font-headline font-bold text-xl mb-2 text-on-surface">Secure Your Project</h3>
                 <p className="text-sm text-on-surface-variant mb-6">A 30% deposit is required to lock in your project date and start the design phase.</p>
               </div>
+              <button className="w-full bg-[#52B44B] hover:bg-[#429E3B] text-white rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-colors active:scale-95 shadow-sm">
+                <span className="material-symbols-outlined">phone_iphone</span>
+                Pay with M-PESA
+              </button>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 h-full">
               <button 
                 onClick={() => window.print()}
-                className="flex items-center justify-between p-6 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-high transition-colors group"
+                className="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-transparent hover:border-primary/20 rounded-2xl transition-all group shrink-0"
               >
                 <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-secondary">picture_as_pdf</span>
-                  <span className="font-semibold text-on-surface">Download Your Quote</span>
+                  <div className="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center">
+                    <span className="material-symbols-outlined text-on-secondary-container">download</span>
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <span className="font-bold text-lg text-on-surface">Download Estimate</span>
+                    <span className="text-sm text-on-surface-variant">Save a PDF copy for your records</span>
+                  </div>
                 </div>
-                <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1">arrow_forward</span>
               </button>
-              <a 
-                href="tel:+254116893804"
-                className="flex items-center justify-between p-6 bg-surface-container-lowest rounded-2xl hover:bg-surface-container-high transition-colors group"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-[#25D366]">chat</span>
-                  <span className="font-semibold text-on-surface">Talk To Our Expert For FREE</span>
+
+              <div className="flex-1 bg-surface-container-lowest rounded-2xl p-6 border-2 border-transparent hover:border-[#25D366]/20 transition-colors flex flex-col justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="material-symbols-outlined text-[#25D366]">support_agent</span>
+                    <h3 className="font-headline font-bold text-lg text-on-surface">Have Questions?</h3>
+                  </div>
+                  <p className="text-sm text-on-surface-variant mb-2">Reach out directly on WhatsApp to get immediate answers from our experts.</p>
                 </div>
-                <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-              </a>
-              <button className="w-full bg-gradient-to-br from-[#006565] to-[#008080] text-white rounded-full py-4 px-6 font-bold text-lg active:scale-95 transition-transform shadow-lg mt-2">
-                SIGN ME UP
-              </button>
+                <div className="flex flex-col items-center gap-4">
+                  <a 
+                    href="https://wa.me/254116893804"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-xl py-4 px-6 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-sm"
+                  >
+                    <span className="material-symbols-outlined">chat</span>
+                    Chat With Us
+                  </a>
+                  <label className="flex items-center gap-2 cursor-pointer w-full justify-center group py-1">
+                    <input type="checkbox" defaultChecked className="w-5 h-5 rounded border-outline-variant text-primary accent-primary cursor-pointer" />
+                    <span className="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Join Our Mailing List</span>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
