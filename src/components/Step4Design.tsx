@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { AppState } from '../types';
 
 interface Step4DesignProps {
@@ -11,9 +12,31 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
     <main className="mr-0 md:mr-80 pt-24 pb-48 md:pb-32 px-6 md:px-12 max-w-5xl">
       <section className="mb-20">
         <header className="mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-sm font-bold mb-4 tracking-wide uppercase">Step 4: Visual Identity</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight mb-4 font-headline">Curate your visual identity</h1>
-          <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Define the aesthetic direction of your digital home. Choose a moodboard that resonates with your brand's personality.</p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 bg-surface-container border border-outline-variant/30 px-4 py-1.5 rounded-full mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]"
+          >
+            <span className="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+            <span className="text-xs font-bold text-on-surface tracking-wider uppercase">Step 4: Visual Identity</span>
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-on-surface tracking-tight leading-[1.1] mb-6"
+          >
+            Curate your visual <span className="relative inline-block"><span className="relative z-10 text-primary">identity</span><svg className="absolute -bottom-1 -left-2 w-[110%] h-4 text-secondary/40 z-0" viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" /></svg></span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-on-surface-variant text-xl max-w-2xl leading-relaxed font-body"
+          >
+            Define the aesthetic direction of your digital home. Choose a moodboard that resonates with your brand's personality.
+          </motion.p>
         </header>
 
         {/* Moodboard Bento Grid */}
