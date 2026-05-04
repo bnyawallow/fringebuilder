@@ -48,7 +48,7 @@ interface Step6QuoteProps {
 
 export function Step6Quote({ state }: Step6QuoteProps) {
   const [showTerms, setShowTerms] = useState(false);
-  const [hasAcceptedTerms, setHasAcceptedTerms] = useState(false);
+  const [hasAcceptedTerms, setHasAcceptedTerms] = useState(true);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const pricing = calculatePricing(state);
 
@@ -184,17 +184,15 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mb-8 p-6 bg-surface-container-low rounded-2xl border border-[#bdc9c84d] flex items-center justify-between shadow-sm cursor-pointer hover:bg-surface-container hover:border-[#0065654d] transition-all group"
+            className="mb-8 flex items-center justify-center gap-3 cursor-pointer group"
             onClick={() => setHasAcceptedTerms(!hasAcceptedTerms)}
           >
-            <div className="flex items-start md:items-center gap-4">
-              <div className={`w-6 h-6 mt-1 md:mt-0 rounded border flex items-center justify-center shrink-0 transition-colors ${hasAcceptedTerms ? 'bg-primary border-primary text-on-primary' : 'border-outline-variant bg-surface-container-lowest text-transparent'}`}>
-                <span className="material-symbols-outlined text-[18px]">check</span>
-              </div>
-              <p className="text-sm md:text-base font-medium text-on-surface select-none">
-                I accept the <button type="button" onClick={(e) => { e.stopPropagation(); setShowTerms(true); }} className="text-primary underline hover:text-[#006565cc] font-bold">Terms and Conditions</button> to proceed with downloading the estimate or securing my project.
-              </p>
+            <div className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 transition-colors ${hasAcceptedTerms ? 'bg-primary border-primary text-on-primary' : 'border-outline-variant bg-surface-container-lowest text-transparent group-hover:border-primary/50'}`}>
+              <span className="material-symbols-outlined text-[16px]">check</span>
             </div>
+            <p className="text-sm text-on-surface-variant font-medium select-none">
+              I accept the <button type="button" onClick={(e) => { e.stopPropagation(); setShowTerms(true); }} className="text-primary underline hover:text-primary/80">Terms and Conditions</button>
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

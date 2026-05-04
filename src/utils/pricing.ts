@@ -59,12 +59,13 @@ export function calculatePricing(state: AppState) {
 
   if (state.contentProvider === 'copywriter') featureItems.push({ name: 'Professional Content Writing', price: 15000 });
   else if (state.contentProvider === 'self') featureItems.push({ name: 'Content Provided by You', price: 0 });
-  else if (state.contentProvider === 'ai') featureItems.push({ name: 'AI Assisted Content', price: 0 });
+  else if (state.contentProvider === 'ai') featureItems.push({ name: 'Fringe AI Assisted Content', price: 3500 });
 
   if (state.designMood) featureItems.push({ name: `Design Mood: ${state.designMood.charAt(0).toUpperCase() + state.designMood.slice(1)}`, price: 0 });
   if (state.primaryColor) featureItems.push({ name: `Primary Color: ${state.primaryColor}`, price: 0 });
   if (state.secondaryColor) featureItems.push({ name: `Secondary Color: ${state.secondaryColor}`, price: 0 });
   if (state.hasLogo) featureItems.push({ name: 'Logo Provided', price: 0 });
+  if (state.referenceWebsites) featureItems.push({ name: `Inspiration: ${state.referenceWebsites}`, price: 0 });
 
   let hostingPrice = 0;
   let hostingName = 'Standard Domain + Hosting';

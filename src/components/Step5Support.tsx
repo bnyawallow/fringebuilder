@@ -238,7 +238,7 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-on-surface-variant mb-2">WhatsApp Number (Optional)</label>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">WhatsApp Number</label>
                 <div className="flex gap-2">
                   <div className="bg-surface-container-low rounded-xl px-3 flex items-center text-sm font-bold text-on-surface-variant border border-outline-variant/50">+254</div>
                   <input 
@@ -249,6 +249,7 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                     placeholder="712345678" 
                     autoComplete="tel-local"
                     pattern="[0-9]*"
+                    required
                   />
                 </div>
               </div>
