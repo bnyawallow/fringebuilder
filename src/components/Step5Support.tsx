@@ -62,7 +62,7 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
           <p className="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-body">Tell us how you want to handle content, choose your ongoing support, and provide your contact details.</p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Secondary Config Column */}
           <div className="space-y-8">
             <div>

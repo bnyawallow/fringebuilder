@@ -68,7 +68,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
               <span className="material-symbols-outlined">star</span>
               Recommended for you
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {isCreator ? (
                 <>
                   <FeatureCard id="premiumGallery" icon="photo_library" title="Premium Image / Portfolio Gallery" desc="Enhanced layouts for your work." price={0} />
@@ -103,7 +103,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
             </button>
             
             {showAdvanced && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 animate-in fade-in slide-in-from-top-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 animate-in fade-in slide-in-from-top-4">
                 {!isCreator && <FeatureCard id="blog" icon="article" title="Blog / News Section" desc="Share stories and updates." price={6000} />}
                 {isCreator && <FeatureCard id="reviews" icon="reviews" title="Customer Reviews System" desc="Build trust with testimonials." price={5000} />}
                 <FeatureCard id="dashboard" icon="dashboard" title="Advanced Self-Service Dashboard" desc="Manage your site easily." price={10000} />
@@ -117,7 +117,7 @@ export function Step3Features({ state, updateState }: Step3FeaturesProps) {
               <span className="material-symbols-outlined">dns</span>
               Domain & Hosting Options
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <label className="group cursor-pointer">
                 <input type="radio" name="hosting" className="hidden peer" checked={state.hosting === 'standard'} onChange={() => updateState({ hosting: 'standard' })} />
                 <div className="bg-surface-container-lowest peer-checked:bg-primary/5 border-2 border-transparent peer-checked:border-primary p-5 rounded-xl h-full transition-all duration-300 relative">

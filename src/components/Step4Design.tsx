@@ -21,7 +21,7 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
           {/* Modern Card */}
           <div 
             onClick={() => updateState({ designMood: 'modern' })}
-            className={`col-span-12 md:col-span-4 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'modern' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
+            className={`col-span-12 lg:col-span-4 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'modern' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-surface-container-high overflow-hidden">
               <img alt="Minimalist tech interface with clean lines and high-contrast typography" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGMVmhGyG6fLzzeZumjHvGBqBBt76mqyy9mQOCUuJXh7nuNN6HdCJ1hq88JSpHuSQKFzKsxZqpncmgMOPT0nUjPEdjqXM-81T7p8sYcTT2FhrLzPPZSxG5SscgvFiyW4MMyh_7G0QaUcJV9FrrUkAQ2JuVrmRPt7TTdn8MyrjSzrVYqNZdOjl-eeqoPn6AjIZMQ8V77kmuhNichJaNkCn56Bk_MqY5x3Mpxrf8JUO0r70T6EfhlIcRluZAuP6LB8R2a9cK7aK2Fg" referrerPolicy="no-referrer" />
@@ -38,7 +38,7 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
           {/* Bold Card */}
           <div 
             onClick={() => updateState({ designMood: 'bold' })}
-            className={`col-span-12 md:col-span-8 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'bold' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
+            className={`col-span-12 lg:col-span-8 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'bold' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-surface-container-high overflow-hidden">
               <img alt="Vibrant design with energetic orange and teal gradients" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFBji7KSboCJHlHo5p4zsc66iy53b5bGVblFhDYDR4ed5f66UHYcT8Qqkc0seiUwlvvIwrRXdQ1EkcQwQ1q8YLOypdxq3yIVPRVL21m7epvzCrC68kkQfKpl4y62CgSeDMD7_gBs9JBCOMCJmDqlY4-F_T62uyReXzvzb6ul0SQ60UvUjK3f8DbjLMRIdkZ5fpAYpn9Zrpll6NlhYKIWuHobxGMr2U4aGRsT6ZKY1Ab51UY4N4wo_3GsLOySpR9bVFkAfIYkYyUQ" referrerPolicy="no-referrer" />
@@ -57,7 +57,7 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
           {/* Warm Kenyan Card */}
           <div 
             onClick={() => updateState({ designMood: 'warm' })}
-            className={`col-span-12 md:col-span-5 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'warm' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
+            className={`col-span-12 lg:col-span-5 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'warm' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-secondary-fixed overflow-hidden">
               <img alt="Warm earth tones and subtle cultural patterns" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiSDTAE4faTTfZD4TSWDdFfz5NZG2o9I0oSkm66Zp0Fr_MM27SXtBFtMhXX0OqIW5HAJgHs67qH7_bEiSPhbpz8grqo5JJG7olfxfjnGhu7DwuWuE6v5riXcQyMcPg67PExGQBywvuKncuENmtTKO60W3o0mk75gdgPg0bHvG39FeLcaxNZeVYdbfeDOOLaZrsQx5ixezbTZwhhJOricocVy0e29UvuiNArwoJspRGLRF6Y2WHaG5P4rnggfsBjU3Et7GU9mXNaQ" referrerPolicy="no-referrer" />
@@ -74,7 +74,7 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
           {/* Professional Card */}
           <div 
             onClick={() => updateState({ designMood: 'professional' })}
-            className={`col-span-12 md:col-span-3 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'professional' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
+            className={`col-span-12 lg:col-span-3 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'professional' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-primary-container overflow-hidden">
               <img alt="Serious corporate layout with trustworthy blue tones" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDffSTO2eZGAh0RZ58-YZ9YXnYUMuFhYfEpe2qDdVgOWHnxKhTM1w-RdBpZLCZAt6qWZVKFtywuaSsqMFaM4gMRYoxJx8Bxq9oxAVg4c5KucPWQ1uDsyzIsxWRMqLND-ztP51L1wF4Q1Slgc22uOtQfUdMatRqmskFM4T1DZty8J5UDJbXi07TTdxvcm4E_PP2kzIIN9qVlTvJcNsM-HDAPvkez-788gdXsXQJkFU_bMNQKAaDNv7Sp28FMz4tLzIUH_8Z8p274xw" referrerPolicy="no-referrer" />
@@ -91,7 +91,7 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
           {/* Minimal Card */}
           <div 
             onClick={() => updateState({ designMood: 'minimal' })}
-            className={`col-span-12 md:col-span-4 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'minimal' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
+            className={`col-span-12 lg:col-span-4 group cursor-pointer relative overflow-hidden bg-surface-container-lowest shadow-sm p-6 border-2 rounded-2xl transition-all ${state.designMood === 'minimal' ? 'border-primary bg-primary/5' : 'border-transparent hover:border-primary/50'}`}
           >
             <div className="h-40 rounded-xl mb-4 bg-surface-container overflow-hidden">
               <img alt="Essentialist design focusing on content" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv-7s4roB_RWqArnN7ZSQyuKreK05IuiwFmIbsTpETb8qS9-BDGQeeviw4wIWBV7vW7tEOhnHroC9OxEMSEIhG-E5ahELkz3-TN8ub0ldrakCxlxo-XVIuHqy7HqoMuwhqlx7_bC_0lafwLHIDIRGqtXd7nODTrSZko8BaUXI8sOuxlMqbI0g4t8I7FBOYBJQfesqat5OAf1RQ7Gyfx1AEs7SC53XGM9TkMMhVuIC3j2V9dKq2bLGd3pu8SlXn9BnM9ZY_D-_SqQ" referrerPolicy="no-referrer" />
@@ -106,7 +106,7 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Color Palette Picker */}
           <div className="bg-surface-container-low p-8 rounded-3xl">
             <h3 className="font-headline font-bold text-xl mb-6 flex items-center gap-2">

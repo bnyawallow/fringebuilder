@@ -87,7 +87,7 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {packages.map((pkg) => {
             const isSelected = state.packageTier === pkg.id;
             return (

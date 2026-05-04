@@ -83,7 +83,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-surface-container-lowest border-2 border-primary/10 rounded-2xl p-8 flex flex-col justify-between hover:border-primary/40 transition-colors">
               <div>
                 <div className="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center mb-6">
