@@ -244,11 +244,11 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
                   <input 
                     type="tel" 
                     value={state.contact.whatsapp}
-                    onChange={(e) => updateContact('whatsapp', e.target.value)}
+                    onChange={(e) => updateContact('whatsapp', e.target.value.replace(/[\s\-+]/g, ''))}
                     className="flex-1 bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
-                    placeholder="712 345 678" 
+                    placeholder="712345678" 
                     autoComplete="tel-local"
-                    pattern="[0-9\s\-]+"
+                    pattern="[0-9]*"
                   />
                 </div>
               </div>
