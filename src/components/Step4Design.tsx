@@ -159,34 +159,72 @@ export function Step4Design({ state, updateState }: Step4DesignProps) {
             <div className="space-y-6">
               <div>
                 <p className="text-sm font-semibold mb-3 text-on-surface-variant">Primary Brand Color</p>
-                <div className="flex gap-3">
-                  {['#006565', '#8a5029', '#3b82f6', '#10b981'].map(color => (
-                    <div 
-                      key={color}
-                      onClick={() => updateState({ primaryColor: color })}
-                      className={`w-12 h-12 rounded-full cursor-pointer hover:scale-110 transition-transform ${state.primaryColor === color ? 'border-4 border-white shadow-md' : ''}`}
-                      style={{ backgroundColor: color }}
-                    ></div>
-                  ))}
-                  <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-outline">add</span>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <div className="flex gap-3">
+                    {['#006565', '#8a5029', '#3b82f6', '#10b981'].map(color => (
+                      <div 
+                        key={color}
+                        onClick={() => updateState({ primaryColor: color })}
+                        className={`w-12 h-12 rounded-full cursor-pointer hover:scale-110 transition-transform ${state.primaryColor === color ? 'border-4 border-white shadow-md' : ''}`}
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/30 rounded-full p-1.5 shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/20 transition-all group/picker">
+                    <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0 shadow-inner border border-outline-variant/30 group-hover/picker:border-primary/50 transition-colors cursor-pointer">
+                      <input 
+                        type="color" 
+                        value={state.primaryColor?.startsWith('#') && state.primaryColor.length === 7 ? state.primaryColor : '#006565'}
+                        onChange={(e) => updateState({ primaryColor: e.target.value })}
+                        className="absolute -inset-4 w-20 h-20 cursor-pointer"
+                      />
+                    </div>
+                    <div className="flex items-center pr-2">
+                      <span className="text-on-surface-variant font-medium text-sm">#</span>
+                      <input 
+                        type="text" 
+                        value={state.primaryColor?.replace('#', '') || ''}
+                        onChange={(e) => updateState({ primaryColor: '#' + e.target.value.replace(/[^0-9A-Fa-f]/g, '').slice(0, 6) })}
+                        placeholder="HEX"
+                        className="w-[60px] bg-transparent border-none outline-none text-sm font-medium uppercase placeholder:text-on-surface-variant/50 text-on-surface ml-0.5"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div>
                 <p className="text-sm font-semibold mb-3 text-on-surface-variant">Secondary Brand Color</p>
-                <div className="flex gap-3">
-                  {['#f6f3ee', '#fef3c7', '#e0e7ff', '#d1fae5'].map(color => (
-                    <div 
-                      key={color}
-                      onClick={() => updateState({ secondaryColor: color })}
-                      className={`w-12 h-12 rounded-full cursor-pointer hover:scale-110 transition-transform border border-outline-variant/30 ${state.secondaryColor === color ? 'border-4 border-white shadow-md' : ''}`}
-                      style={{ backgroundColor: color }}
-                    ></div>
-                  ))}
-                  <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-outline">add</span>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <div className="flex gap-3">
+                    {['#f6f3ee', '#fef3c7', '#e0e7ff', '#d1fae5'].map(color => (
+                      <div 
+                        key={color}
+                        onClick={() => updateState({ secondaryColor: color })}
+                        className={`w-12 h-12 rounded-full cursor-pointer hover:scale-110 transition-transform border border-outline-variant/30 ${state.secondaryColor === color ? 'border-4 border-white shadow-md' : ''}`}
+                        style={{ backgroundColor: color }}
+                      ></div>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-2 bg-surface-container-lowest border border-outline-variant/30 rounded-full p-1.5 shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/20 transition-all group/picker">
+                    <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0 shadow-inner border border-outline-variant/30 group-hover/picker:border-primary/50 transition-colors cursor-pointer">
+                      <input 
+                        type="color" 
+                        value={state.secondaryColor?.startsWith('#') && state.secondaryColor.length === 7 ? state.secondaryColor : '#f6f3ee'}
+                        onChange={(e) => updateState({ secondaryColor: e.target.value })}
+                        className="absolute -inset-4 w-20 h-20 cursor-pointer"
+                      />
+                    </div>
+                    <div className="flex items-center pr-2">
+                      <span className="text-on-surface-variant font-medium text-sm">#</span>
+                      <input 
+                        type="text" 
+                        value={state.secondaryColor?.replace('#', '') || ''}
+                        onChange={(e) => updateState({ secondaryColor: '#' + e.target.value.replace(/[^0-9A-Fa-f]/g, '').slice(0, 6) })}
+                        placeholder="HEX"
+                        className="w-[60px] bg-transparent border-none outline-none text-sm font-medium uppercase placeholder:text-on-surface-variant/50 text-on-surface ml-0.5"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

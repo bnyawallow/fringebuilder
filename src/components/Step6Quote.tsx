@@ -65,7 +65,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
       const opt = {
         margin:       0.5,
         filename:     `Estimate - ${state.contact.fullName || 'Client'}.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
+        image:        { type: 'jpeg' as const, quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
@@ -85,7 +85,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-surface-container border border-outline-variant/30 px-4 py-1.5 rounded-full mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]"
+            className="inline-flex items-center gap-2 bg-surface-container border border-[#bdc9c84d] px-4 py-1.5 rounded-full mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)]"
           >
             <span className="material-symbols-outlined text-primary text-sm">auto_awesome</span>
             <span className="text-xs font-bold text-on-surface tracking-wider uppercase">Step 6: Review & Confirm</span>
@@ -96,7 +96,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-on-surface tracking-tight leading-[1.1] mb-6"
           >
-            Your Quote <span className="relative inline-block"><span className="relative z-10 text-primary">Summary.</span><svg className="absolute -bottom-1 -left-2 w-[110%] h-4 text-secondary/40 z-0" viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" /></svg></span>
+            Your Quote <span className="relative inline-block"><span className="relative z-10 text-primary">Summary.</span><svg className="absolute -bottom-1 -left-2 w-[110%] h-4 text-[#8a502966] z-0" viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" /></svg></span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -172,7 +172,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                   <span>VAT (16%)</span>
                   <span>KSh {formatCurrency(pricing.vat)}</span>
                 </div>
-                <div className="flex justify-between pt-3 border-t border-outline-variant/30">
+                <div className="flex justify-between pt-3 border-t border-[#bdc9c84d]">
                   <span className="font-bold text-xl text-on-surface">Grand Total</span>
                   <span className="font-extrabold text-2xl text-primary">KSh {formatCurrency(pricing.total)}</span>
                 </div>
@@ -184,7 +184,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mb-8 p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30 flex items-center justify-between shadow-sm cursor-pointer hover:bg-surface-container hover:border-primary/30 transition-all group"
+            className="mb-8 p-6 bg-surface-container-low rounded-2xl border border-[#bdc9c84d] flex items-center justify-between shadow-sm cursor-pointer hover:bg-surface-container hover:border-[#0065654d] transition-all group"
             onClick={() => setHasAcceptedTerms(!hasAcceptedTerms)}
           >
             <div className="flex items-start md:items-center gap-4">
@@ -192,7 +192,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 <span className="material-symbols-outlined text-[18px]">check</span>
               </div>
               <p className="text-sm md:text-base font-medium text-on-surface select-none">
-                I accept the <button type="button" onClick={(e) => { e.stopPropagation(); setShowTerms(true); }} className="text-primary underline hover:text-primary/80 font-bold">Terms and Conditions</button> to proceed with downloading the estimate or securing my project.
+                I accept the <button type="button" onClick={(e) => { e.stopPropagation(); setShowTerms(true); }} className="text-primary underline hover:text-[#006565cc] font-bold">Terms and Conditions</button> to proceed with downloading the estimate or securing my project.
               </p>
             </div>
           </motion.div>
@@ -202,7 +202,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="bg-surface-container-lowest border-2 border-primary/10 rounded-2xl p-8 flex flex-col justify-between hover:border-primary/40 transition-colors"
+              className="bg-surface-container-lowest border-2 border-[#0065651a] rounded-2xl p-8 flex flex-col justify-between hover:border-[#00656566] transition-colors"
             >
               <div>
                 <div className="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center mb-6">
@@ -213,7 +213,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               </div>
               <button 
                 disabled={!hasAcceptedTerms}
-                className={`w-full rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-all shadow-sm ${hasAcceptedTerms ? 'bg-[#52B44B] hover:bg-[#429E3B] text-white active:scale-95' : 'bg-surface-container border border-outline-variant/30 text-on-surface-variant opacity-50 cursor-not-allowed'}`}
+                className={`w-full rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-all shadow-sm ${hasAcceptedTerms ? 'bg-[#52B44B] hover:bg-[#429E3B] text-white active:scale-95' : 'bg-surface-container border border-[#bdc9c84d] text-on-surface-variant opacity-50 cursor-not-allowed'}`}
               >
                 <span className="material-symbols-outlined">phone_iphone</span>
                 Pay with M-PESA
@@ -229,10 +229,10 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               <button 
                 onClick={handleDownloadPDF}
                 disabled={!hasAcceptedTerms || isGeneratingPDF}
-                className={`flex items-center justify-between p-5 bg-surface-container-lowest border-2 rounded-2xl transition-all shrink-0 ${hasAcceptedTerms && !isGeneratingPDF ? 'border-transparent hover:border-primary/20 cursor-pointer group' : 'border-outline-variant/30 opacity-50 cursor-not-allowed'}`}
+                className={`flex items-center justify-between p-5 bg-surface-container-lowest border-2 rounded-2xl transition-all shrink-0 ${hasAcceptedTerms && !isGeneratingPDF ? 'border-transparent hover:border-[#00656533] cursor-pointer group' : 'border-[#bdc9c84d] opacity-50 cursor-not-allowed'}`}
               >
                 <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${hasAcceptedTerms && !isGeneratingPDF ? 'bg-secondary-fixed text-on-secondary-container group-hover:bg-primary/10 group-hover:text-primary transition-colors' : 'bg-surface-container text-on-surface-variant'}`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${hasAcceptedTerms && !isGeneratingPDF ? 'bg-secondary-fixed text-on-secondary-container group-hover:bg-[#0065651a] group-hover:text-primary transition-colors' : 'bg-surface-container text-on-surface-variant'}`}>
                     <span className="material-symbols-outlined">
                       {isGeneratingPDF ? 'hourglass_empty' : 'download'}
                     </span>
@@ -245,7 +245,7 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 <span className={`material-symbols-outlined transition-all transform ${hasAcceptedTerms && !isGeneratingPDF ? 'opacity-0 group-hover:opacity-100 group-hover:translate-x-1 text-on-surface' : 'opacity-0'} `}>arrow_forward</span>
               </button>
 
-              <div className="flex-1 bg-surface-container-lowest rounded-2xl p-6 border-2 border-transparent hover:border-[#25D366]/20 transition-colors flex flex-col justify-between gap-6">
+              <div className="flex-1 bg-surface-container-lowest rounded-2xl p-6 border-2 border-transparent hover:border-[#25D36633] transition-colors flex flex-col justify-between gap-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <span className="material-symbols-outlined text-[#25D366]">support_agent</span>
