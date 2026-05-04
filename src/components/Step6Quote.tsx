@@ -1,13 +1,53 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { AppState } from '../types';
 import { calculatePricing } from '../utils/pricing';
+
+const TermsModal = ({ onClose }: { onClose: () => void }) => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <motion.div 
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.2 }}
+      className="bg-surface-container-lowest rounded-3xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+    >
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold font-headline text-on-surface">Terms and Conditions</h2>
+        <button onClick={onClose} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+          <span className="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div className="space-y-4 text-on-surface-variant text-sm leading-relaxed">
+        <p>By proceeding with this application, you agree to our Terms and Conditions.</p>
+        
+        <h3 className="font-bold text-on-surface mt-6 text-base">1. Use of Contact Information</h3>
+        <p>We may use the contact information provided (such as your email address and phone number) to communicate with you regarding your quote, development updates, and to share relevant internal offers or promotional materials (Lead Generation).</p>
+        
+        <h3 className="font-bold text-on-surface mt-6 text-base">2. Data Privacy</h3>
+        <p>Your privacy is important to us. We will <strong>never</strong> sell, rent, or share your personal contact information with third parties or external vendors for their own marketing purposes. Your data is kept strictly confidential within our organization.</p>
+
+        <h3 className="font-bold text-on-surface mt-6 text-base">3. Project Initiation & Deposits</h3>
+        <p>A non-refundable deposit (typically 30%) is required to lock in your project date and commence the discovery and design phases. Remaining balances will be billed according to agreed milestone deliverables.</p>
+
+        <h3 className="font-bold text-on-surface mt-6 text-base">4. Revisions & Approvals</h3>
+        <p>Projects include a set number of revision rounds as defined in your specific package. Any additional major design or functional changes requested after sign-off may incur additional costs.</p>
+      </div>
+      <div className="mt-8 flex justify-end">
+        <button onClick={onClose} className="px-6 py-3 bg-primary text-on-primary font-bold rounded-xl hover:bg-primary/90 transition-colors">
+          I Understand
+        </button>
+      </div>
+    </motion.div>
+  </div>
+);
 
 interface Step6QuoteProps {
   state: AppState;
 }
 
 export function Step6Quote({ state }: Step6QuoteProps) {
+  const [showTerms, setShowTerms] = useState(false);
   const pricing = calculatePricing(state);
 
   const formatCurrency = (amount: number) => {
@@ -178,7 +218,9 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                   </a>
                   <label className="flex items-center gap-2 cursor-pointer w-full justify-center group py-1">
                     <input type="checkbox" defaultChecked className="w-5 h-5 rounded border-outline-variant text-primary accent-primary cursor-pointer" />
-                    <span className="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Join Our Mailing List</span>
+                    <span className="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors select-none">
+                      Accept our <button type="button" onClick={(e) => { e.preventDefault(); setShowTerms(true); }} className="text-primary underline hover:text-primary/80">terms and conditions</button>
+                    </span>
                   </label>
                 </div>
               </div>
@@ -186,6 +228,10 @@ export function Step6Quote({ state }: Step6QuoteProps) {
           </div>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {showTerms && <TermsModal onClose={() => setShowTerms(false)} />}
+      </AnimatePresence>
     </main>
   );
 }

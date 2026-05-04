@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppState } from './types';
 import { TopNavBar } from './components/TopNavBar';
 import { FooterActionBar } from './components/FooterActionBar';
@@ -52,6 +52,10 @@ export default function App() {
       email: '',
     },
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [state.step]);
 
   const updateState = (updates: Partial<AppState>) => {
     setState((prev) => ({ ...prev, ...updates }));
