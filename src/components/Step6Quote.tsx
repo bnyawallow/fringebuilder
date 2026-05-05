@@ -50,10 +50,43 @@ export function Step6Quote({ state }: Step6QuoteProps) {
   const [showTerms, setShowTerms] = useState(false);
   const [hasAcceptedTerms, setHasAcceptedTerms] = useState(true);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
   const pricing = calculatePricing(state);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-KE').format(amount);
+  };
+
+  const handleMpesaPayment = async () => {
+    if (!hasAcceptedTerms) return;
+    setIsProcessingPayment(true);
+    setPaymentStatus(null);
+    
+    try {
+      const response = await fetch('/api/stkpush', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phone: state.contact.whatsapp,
+          amount: pricing.total * 0.3, // 30% deposit
+          reference: `FB-${state.contact.fullName.split(' ')[0]}`.substring(0, 12)
+        })
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || data.details || 'Payment failed to initiate');
+      }
+
+      setPaymentStatus('Check your phone to enter your M-PESA PIN.');
+    } catch (error: any) {
+      console.error(error);
+      setPaymentStatus(`Error: ${error.message}`);
+    } finally {
+      setIsProcessingPayment(false);
+    }
   };
 
   const handleDownloadPDF = async () => {
@@ -209,12 +242,20 @@ export function Step6Quote({ state }: Step6QuoteProps) {
                 <p className="text-sm text-on-surface-variant mb-6">A 30% deposit is required to lock in your project date and start the design phase.</p>
               </div>
               <button 
-                disabled={!hasAcceptedTerms}
-                className={`w-full rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-all shadow-sm ${hasAcceptedTerms ? 'bg-[#52B44B] hover:bg-[#429E3B] text-white active:scale-95' : 'bg-surface-container border border-[#bdc9c84d] text-on-surface-variant opacity-50 cursor-not-allowed'}`}
+                onClick={handleMpesaPayment}
+                disabled={!hasAcceptedTerms || isProcessingPayment}
+                className={`w-full rounded-xl py-4 font-bold flex items-center justify-center gap-2 transition-all shadow-sm ${hasAcceptedTerms && !isProcessingPayment ? 'bg-[#52B44B] hover:bg-[#429E3B] text-white active:scale-95' : 'bg-surface-container border border-[#bdc9c84d] text-on-surface-variant opacity-50 cursor-not-allowed'}`}
               >
-                <span className="material-symbols-outlined">phone_iphone</span>
-                Pay with M-PESA
+                <span className="material-symbols-outlined">
+                  {isProcessingPayment ? 'hourglass_empty' : 'phone_iphone'}
+                </span>
+                {isProcessingPayment ? 'Processing...' : 'Pay with M-PESA'}
               </button>
+              {paymentStatus && (
+                <p className={`text-sm text-center mt-4 font-medium ${paymentStatus.startsWith('Error') ? 'text-red-500' : 'text-[#52B44B]'}`}>
+                  {paymentStatus}
+                </p>
+              )}
             </motion.div>
 
             <motion.div 
