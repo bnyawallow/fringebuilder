@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { AppState } from '../types';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 interface Step5SupportProps {
   state: AppState;
@@ -10,6 +12,18 @@ interface Step5SupportProps {
 export function Step5Support({ state, updateState }: Step5SupportProps) {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [defaultCountry, setDefaultCountry] = useState<any>('KE');
+
+  useEffect(() => {
+    fetch('https://ipapi.co/country/')
+      .then(res => res.text())
+      .then(code => {
+         if (code && code.length === 2 && code !== 'Undefined') {
+           setDefaultCountry(code);
+         }
+      })
+      .catch(() => {});
+  }, []);
 
   const updateContact = (field: keyof AppState['contact'], value: string) => {
     updateState({
@@ -240,16 +254,13 @@ export function Step5Support({ state, updateState }: Step5SupportProps) {
               <div>
                 <label className="block text-sm font-medium text-on-surface-variant mb-2">WhatsApp Number</label>
                 <div className="flex gap-2">
-                  <div className="bg-surface-container-low rounded-xl px-3 flex items-center text-sm font-bold text-on-surface-variant border border-outline-variant/50">+254</div>
-                  <input 
-                    type="tel" 
+                  <PhoneInput
+                    international
+                    defaultCountry={defaultCountry}
                     value={state.contact.whatsapp}
-                    onChange={(e) => updateContact('whatsapp', e.target.value.replace(/[\s\-+]/g, ''))}
-                    className="flex-1 bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" 
-                    placeholder="712345678" 
-                    autoComplete="tel-local"
-                    pattern="[0-9]*"
-                    required
+                    onChange={(val) => updateContact('whatsapp', val || '')}
+                    className="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl px-4 py-3 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary transition-all outline-none"
+                    placeholder="Enter phone number"
                   />
                 </div>
               </div>

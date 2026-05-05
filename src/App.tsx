@@ -54,7 +54,11 @@ export default function App() {
   });
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 10);
   }, [state.step]);
 
   const updateState = (updates: Partial<AppState>) => {
@@ -89,8 +93,8 @@ export default function App() {
           : state.contact.businessName.trim().length >= 2;
         const hasEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.contact.email.trim());
         
-        const cleanWhatsapp = state.contact.whatsapp.replace(/[\s\-\+]/g, '');
-        const hasValidPhone = cleanWhatsapp === '' || /^\d{9,15}$/.test(cleanWhatsapp);
+        const cleanWhatsapp = state.contact.whatsapp ? state.contact.whatsapp.replace(/[\s\-\+]/g, '') : '';
+        const hasValidPhone = cleanWhatsapp.length >= 9 && /^\d{9,15}$/.test(cleanWhatsapp);
 
         return hasContentProvider && hasCarePackage && hasName && hasEmail && hasValidPhone;
       default:

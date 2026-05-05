@@ -88,3 +88,42 @@ button, .cursor-pointer {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Phone Input Overrides */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+}
+.PhoneInputInput {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.PhoneInputCountrySelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.PhoneInputCountry {
+  position: relative;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1rem;
+}
+.PhoneInputCountryIcon--border {
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+}
