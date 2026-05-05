@@ -119,24 +119,84 @@ export function Step0Landing({ state, updateState, onNext }: Step0LandingProps) 
         </div>
 
         {/* Decorative Visual */}
-        <div className="mt-24 grid grid-cols-12 gap-8 items-center opacity-80">
-          <div className="col-span-12 lg:col-span-5 h-[400px] rounded-[3rem] overflow-hidden">
-            <img className="w-full h-full object-cover" alt="Kenyan entrepreneur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkjRO604VEJ57P7as0iWXvGsWH23fE8DNcNj_QKUITBaQG5x8gwYBXTenFmJk6pB8CzrWdX6n8aowFlJnCfzAN0AVwCvZs2lcHVwtr1Ij4UptHjI4Wsfv9k8rprX_ih3hZqtY9EAhxIGM8hnmmgyx6ennV6YDoAndj2sl02rCLOT1gmllM-DZEHs7_dJ_dNw4spuOXLjWhk5UW2y61dAusvwyQmJ-NOr79vfIxUkUQHPK6Hq_-w4gJv3HndgNx64M41RDXAcRXbQ" referrerPolicy="no-referrer" />
+        <div className="mt-24 grid grid-cols-12 gap-8 items-center opacity-90">
+          <div className="col-span-12 lg:col-span-5 h-[400px] rounded-[3rem] relative bg-surface-container p-8 flex flex-col justify-center border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+             <div className="absolute top-0 right-0 p-8 opacity-5">
+               <span className="material-symbols-outlined text-[12rem]">trending_up</span>
+             </div>
+             
+             <div className="relative z-10 flex flex-col gap-5">
+               <motion.div 
+                 initial={{ opacity: 0, x: -20 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex items-center justify-between border border-surface-container-highest"
+               >
+                 <div className="flex items-center gap-4">
+                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                     <span className="material-symbols-outlined">public</span>
+                   </div>
+                   <div>
+                     <div className="text-base font-bold text-on-surface">Global Reach</div>
+                     <div className="text-sm text-on-surface-variant">Visible to millions 24/7</div>
+                   </div>
+                 </div>
+                 <span className="material-symbols-outlined text-primary">arrow_upward</span>
+               </motion.div>
+               
+               <motion.div 
+                 initial={{ opacity: 0, x: -20 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.1 }}
+                 className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex items-center justify-between ml-6 border border-surface-container-highest"
+               >
+                 <div className="flex items-center gap-4">
+                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+                     <span className="material-symbols-outlined">payments</span>
+                   </div>
+                   <div>
+                     <div className="text-base font-bold text-on-surface">Online Sales</div>
+                     <div className="text-sm text-on-surface-variant">Automated conversions</div>
+                   </div>
+                 </div>
+                 <span className="text-secondary font-bold text-lg">+84%</span>
+               </motion.div>
+               
+               <motion.div 
+                 initial={{ opacity: 0, x: -20 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.2 }}
+                 className="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex items-center justify-between ml-12 border border-surface-container-highest"
+               >
+                 <div className="flex items-center gap-4">
+                   <div className="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+                     <span className="material-symbols-outlined">verified</span>
+                   </div>
+                   <div>
+                     <div className="text-base font-bold text-on-surface">Credibility</div>
+                     <div className="text-sm text-on-surface-variant">Professional brand image</div>
+                   </div>
+                 </div>
+                 <span className="material-symbols-outlined text-tertiary" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+               </motion.div>
+             </div>
           </div>
           <div className="col-span-12 lg:col-span-7 pl-0 lg:pl-12">
-            <div className="inline-block px-4 py-2 bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold rounded-full mb-6 uppercase tracking-widest">Enterprise Ready</div>
-            <h2 className="text-4xl font-headline font-bold mb-6 text-on-surface">Integrated Local Payments</h2>
+            <div className="inline-block px-4 py-2 bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold rounded-full mb-6 uppercase tracking-widest">Growth Accelerator</div>
+            <h2 className="text-4xl md:text-5xl font-headline font-bold mb-6 text-on-surface tracking-tight">Unlock Your Full Potential</h2>
             <p className="text-xl text-on-surface-variant leading-relaxed mb-8">
-              Fringe is built specifically for the Kenyan market. Every website comes pre-configured with M-PESA, Pesapal, and DPO Group integrations out of the box. No coding required.
+              A robust web presence is no longer optional. Establish credibility, reach new audiences beyond your immediate network, and turn casual visitors into loyal clients around the clock.
             </p>
             <div className="flex gap-8">
               <div className="flex flex-col">
-                <span className="text-3xl font-extrabold text-primary">150+</span>
-                <span className="text-sm font-semibold text-on-surface-variant uppercase">Local Templates</span>
+                <span className="text-3xl font-extrabold text-primary">24/7</span>
+                <span className="text-sm font-semibold text-on-surface-variant uppercase">Availability</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-3xl font-extrabold text-primary">24/7</span>
-                <span className="text-sm font-semibold text-on-surface-variant uppercase">Local Support</span>
+                <span className="text-3xl font-extrabold text-primary">100%</span>
+                <span className="text-sm font-semibold text-on-surface-variant uppercase">Your Ownership</span>
               </div>
             </div>
           </div>
