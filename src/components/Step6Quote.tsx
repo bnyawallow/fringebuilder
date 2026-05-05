@@ -280,21 +280,21 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               <h1 className="text-5xl font-black text-primary tracking-tight font-headline mb-2">Fringe Builder</h1>
               <p className="text-[#8a5029] font-bold tracking-widest uppercase text-sm">Digital Home Estimates</p>
             </div>
-            <div className="text-right text-gray-500 text-sm space-y-1">
-              <p className="font-medium text-gray-800">Date: {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <div className="text-right text-[#6B7280] text-sm space-y-1">
+              <p className="font-medium text-[#1F2937]">Date: {new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
               <p>Reference: FB-{Math.floor(Math.random() * 10000)}</p>
             </div>
           </div>
 
           {/* Intro */}
-          <div className="mb-12 text-gray-800 text-lg leading-relaxed">
+          <div className="mb-12 text-[#1F2937] text-lg leading-relaxed">
             <p className="font-bold text-2xl mb-4 text-[#1a1a1a] font-headline">Hi {state.contact.fullName || 'there'},</p>
             <p>Thank you for considering Fringe Builder for your digital home. We're excited about the possibility of bringing your vision to life. Below is a detailed estimate based on the preferences you've shared with us.</p>
           </div>
 
           {/* Estimate Breakdown */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 mb-12">
-            <h2 className="font-headline text-xl font-bold mb-6 flex items-center gap-3 text-[#1a1a1a] border-b border-gray-100 pb-4">
+          <div className="bg-white rounded-2xl border border-[#F3F4F6] shadow-sm p-8 mb-12">
+            <h2 className="font-headline text-xl font-bold mb-6 flex items-center gap-3 text-[#1a1a1a] border-b border-[#F3F4F6] pb-4">
               Investment Summary
             </h2>
             <div className="space-y-6">
@@ -302,19 +302,19 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               <div className="flex justify-between items-start">
                 <div className="flex flex-col">
                   <span className="font-bold text-lg text-[#1a1a1a]">Development: {pricing.baseName}</span>
-                  <span className="text-gray-500">Core website build</span>
+                  <span className="text-[#6B7280]">Core website build</span>
                 </div>
                 <span className="font-bold text-lg text-[#1a1a1a]">KSh {formatCurrency(pricing.basePrice)}</span>
               </div>
 
               {pricing.featureItems.length > 0 && (
                 <div className="pt-2">
-                  <h3 className="text-sm font-bold tracking-wider text-gray-400 uppercase mb-4">Add-ons & Features</h3>
+                  <h3 className="text-sm font-bold tracking-wider text-[#9CA3AF] uppercase mb-4">Add-ons & Features</h3>
                   <div className="space-y-4">
                     {pricing.featureItems.map((item, idx) => (
-                      <div key={idx} className="flex justify-between items-center bg-gray-50/50 p-3 rounded-lg border border-gray-50">
-                        <span className="font-medium text-gray-700">{item.name}</span>
-                        <span className="font-bold text-gray-800">{item.price === 0 ? 'Included' : `KSh ${formatCurrency(item.price)}`}{item.price > 0 && item.isMonthly ? '/mo' : ''}</span>
+                      <div key={idx} className="flex justify-between items-center bg-[#F9FAFB]/50 p-3 rounded-lg border border-[#F9FAFB]">
+                        <span className="font-medium text-[#374151]">{item.name}</span>
+                        <span className="font-bold text-[#1F2937]">{item.price === 0 ? 'Included' : `KSh ${formatCurrency(item.price)}`}{item.price > 0 && item.isMonthly ? '/mo' : ''}</span>
                       </div>
                     ))}
                   </div>
@@ -322,10 +322,10 @@ export function Step6Quote({ state }: Step6QuoteProps) {
               )}
 
               {pricing.hostingPrice > 0 && (
-                <div className="flex justify-between items-start border-t border-gray-100 pt-6 mt-6">
+                <div className="flex justify-between items-start border-t border-[#F3F4F6] pt-6 mt-6">
                   <div className="flex flex-col">
                     <span className="font-bold text-lg text-[#1a1a1a]">Premium Hosting Add-on</span>
-                    <span className="text-gray-500">{pricing.hostingName}</span>
+                    <span className="text-[#6B7280]">{pricing.hostingName}</span>
                   </div>
                   <span className="font-bold text-lg text-[#1a1a1a]">KSh {formatCurrency(pricing.hostingPrice)}</span>
                 </div>
@@ -335,17 +335,17 @@ export function Step6Quote({ state }: Step6QuoteProps) {
             {/* Totals */}
             <div className="bg-[#f6f3ee] rounded-xl p-8 mt-8 border border-[#e8dfcf]">
               <div className="space-y-4">
-                <div className="flex justify-between text-gray-600 font-medium">
+                <div className="flex justify-between text-[#4B5563] font-medium">
                   <span>Subtotal</span>
                   <span>KSh {formatCurrency(pricing.subtotal)}</span>
                 </div>
                 {pricing.discountAmount > 0 && (
-                  <div className="flex justify-between text-green-600 font-medium">
+                  <div className="flex justify-between text-[#16A34A] font-medium">
                     <span>Discount (5%)</span>
                     <span>-KSh {formatCurrency(pricing.discountAmount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-gray-600 font-medium">
+                <div className="flex justify-between text-[#4B5563] font-medium">
                   <span>VAT (16%)</span>
                   <span>KSh {formatCurrency(pricing.vat)}</span>
                 </div>
@@ -358,13 +358,13 @@ export function Step6Quote({ state }: Step6QuoteProps) {
           </div>
 
           {/* Outro */}
-          <div className="text-gray-700 leading-relaxed mb-12">
+          <div className="text-[#374151] leading-relaxed mb-12">
             <p className="mb-4 text-lg">We would love to continue this conversation and move forward with your project. If you have any questions about this estimate or your project scope, please don't hesitate to reach out.</p>
             <p className="text-lg">Looking forward to building something great together!</p>
           </div>
 
           {/* Footer Contacts */}
-          <div className="border-t-2 border-gray-200 pt-8 flex gap-8 items-center text-primary font-bold">
+          <div className="border-t-2 border-[#E5E7EB] pt-8 flex gap-8 items-center text-primary font-bold">
             <a href="mailto:hello@fringebuilder.com" className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg">mail</span>
               hello@fringebuilder.com
