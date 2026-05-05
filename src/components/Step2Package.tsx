@@ -94,7 +94,7 @@ export function Step2Package({ state, updateState }: Step2PackageProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-on-surface tracking-tight leading-[1.1] mb-6"
           >
-            Based on your {state.category || 'selection'}, we recommend this <span className="relative inline-block"><span className="relative z-10 text-primary">package:</span><svg className="absolute -bottom-1 -left-2 w-[110%] h-4 text-secondary/40 z-0" viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" /></svg></span>
+            As a {state.category === 'Other' && state.otherCategory ? state.otherCategory : (state.category || 'Creator')}, we recommend this <span className="relative inline-block"><span className="relative z-10 text-primary">package:</span><svg className="absolute -bottom-1 -left-2 w-[110%] h-4 text-secondary/40 z-0" viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" /></svg></span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
